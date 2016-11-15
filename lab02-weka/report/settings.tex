@@ -1,0 +1,215 @@
+%===============================================================================
+%	SETTINGS
+%===============================================================================
+
+%-------------------------------------------------------------------------------
+% PACKAGES IMPORT AND CONFIGURATIONS
+%-------------------------------------------------------------------------------
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, french]{babel}
+\usepackage{courier} % To display code in a descent font
+\usepackage[top=37mm, bottom=42mm, left=36mm, right=29mm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{graphicx} % Required to insert images
+\usepackage{titlesec}
+\usepackage{hyperref} % Required for cross-references
+\usepackage[export]{adjustbox} % Required to add frame around figures
+\usepackage{float} % To put figure etc where you want
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage[table]{xcolor} 
+\usepackage{microtype} % Typographic improvements
+\usepackage{setspace} % increase interline spacing slightly
+\usepackage{subfig}
+\usepackage{booktabs}
+\usepackage{lipsum} % To easily add lorem ipsum
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage[final]{pdfpages}
+\usepackage[toc, page]{appendix}
+
+
+%-------------------------------------------------------------------------------
+% PACKAGE OPTIONS
+%-------------------------------------------------------------------------------
+
+% color
+%-------------------------------------------------------------------------------
+\definecolor{gray75}{gray}{0.75}
+\definecolor{gray20}{gray}{0.8}
+\definecolor{light-gray}{gray}{0.50}
+\definecolor{very-light-gray}{gray}{0.9}
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % This is the color used for comments
+
+% Listings
+%-------------------------------------------------------------------------------
+
+% Language loading
+% --------------------------------
+\lstloadlanguages{Java} % Load Java syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+
+% Language styling
+% --------------------------------
+\lstset{
+        breaklines=true,
+        postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+        language=Java, % Use Java
+        frame=single, % Single frame around code
+        basicstyle=\usefont{T1}{pcr}{m}{s}\footnotesize, % Use small true type font
+        keywordstyle=[1]\usefont{T1}{pcr}{m}{s}\color{Purple}\footnotesize\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Blue}, % Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers
+        commentstyle=\usefont{T1}{pcr}{m}{s}\color{MyDarkGreen}\footnotesize, % Comments small dark green courier font
+        stringstyle=\color{Blue}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=4, % 4 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+        %
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        numbers=left, % Line numbers on left
+        numberstyle=\tiny\color{light-gray},  % the style that is used for the line-numbers
+        numbersep=5pt,                  % how far the line-numbers are from the code
+        firstnumber=1, % Line numbers start with line 1
+        %stepnumber=5 % Line numbers go in steps of 5
+}
+
+% graphix
+%-------------------------------------------------------------------------------
+\graphicspath{{img/}}
+
+% setspace
+%-------------------------------------------------------------------------------
+\setstretch{1.1}
+
+\makeatletter
+\setlength{\@fptop}{0pt}  % for aligning all floating figures/tables etc. to the top margin
+\makeatother
+
+
+% Fancyhdr
+%-------------------------------------------------------------------------------
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+\pagestyle{fancy}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0pt}
+  \fancyhead[OR]{\bfseries \nouppercase{\rightmark}}
+  \fancyhead[EL]{\bfseries \nouppercase{\leftmark}}
+  \fancyfoot[EL,OR]{\thepage}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+  \fancyfoot[EL,OR]{\thepage}}
+
+\fancypagestyle{addpagenumbersforpdfimports}{
+  \fancyhead{}
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyfoot{}
+  \fancyfoot[RO,LE]{\thepage}
+}
+
+
+% Hyperref
+%-------------------------------------------------------------------------------
+
+\hypersetup{pdfborder={0 0 0},
+	colorlinks=true,
+	linkcolor=black,
+	citecolor=black,
+	urlcolor=black}
+\urlstyle{same}
+
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+    \hbox{}
+    \thispagestyle{empty}
+    \newpage
+    \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother \clearpage{\pagestyle{plain}\cleardoublepage}
+
+
+% Titlesec
+%-------------------------------------------------------------------------------
+
+\newcommand{\hsp}{\hspace{20pt}}
+
+% Change chapter title style
+% --------------------------------
+\titleformat{\chapter}[block]
+{\Huge\bfseries}
+{\thechapter\hsp\textcolor{gray75}{|}\hsp}
+{0pt}
+{\Huge\bfseries}
+
+\titlespacing*{\chapter}
+{0pt}
+{-50pt}
+{20pt}
+
+% Change section title style
+% --------------------------------
+\titleformat{\section}[block]
+{\Large\bfseries}
+{\thesection}
+{0.5em}
+{}
+ 
+\titlespacing*{\section}
+{0em}
+{1.5ex plus .1ex minus .2ex}
+{0.8em}
+
+% Change subsection title style
+% --------------------------------
+\titleformat{\subsection}[block]
+{\large\bfseries}
+{\thesubsection}
+{0.5em}
+{}
+ 
+\titlespacing*{\subsection}
+{0em}
+{1.5ex plus .1ex minus .2ex}
+{0.3em}
+
+% Change subsubsection title style
+% --------------------------------
+\titleformat{\subsubsection}[block]
+{\normalsize\bfseries}
+{\thesubsubsection}
+{0.5em}
+{}
+ 
+\titlespacing*{\subsubsection}
+{0em}
+{1.5ex plus .1ex minus .2ex}
+{0em}
+
+% Amsmath
+%-------------------------------------------------------------------------------
+%Fix the problem with delimiter size caused by fourier and amsmath packages.
+\makeatletter
+\def\resetMathstrut@{%
+  \setbox\z@\hbox{%
+    \mathchardef\@tempa\mathcode`\(\relax
+      \def\@tempb##1"##2##3{\the\textfont"##3\char"}%
+      \expandafter\@tempb\meaning\@tempa \relax
+  }%
+  \ht\Mathstrutbox@1.2\ht\z@ \dp\Mathstrutbox@1.2\dp\z@
+}
+\makeatother
+

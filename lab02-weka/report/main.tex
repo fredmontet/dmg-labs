@@ -1,0 +1,79 @@
+%===============================================================================
+%	REPORT TEMPLATE
+%===============================================================================
+
+\documentclass[a4paper, 11pt, fleqn, oneside]{book}
+%\documentclass[a4paper, 11pt, fleqn, twoside]{book}
+
+%-------------------------------------------------------------------------------
+%	METADATA AND SETTINGS
+%-------------------------------------------------------------------------------
+
+\input{settings.tex}
+\usepackage[semester]{metadata}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\university{Haute école spécialisée de Suisse occidentale}
+\study{Technologies de l'information et de la communication}
+\faculty{MSE - Software Engineering}
+\course{Data Management}
+\title{Lab 02 - Analyse de données}
+\location{Lausanne}
+
+% Students
+% --------------------------------
+\newcommand{\mAuthors}{
+	Robin Chappatte\\
+	Frédéric Montet\\
+	Brian Nydegger
+}
+
+% Supervisors (Professors)
+% --------------------------------
+\newcommand{\mSupervisors}{
+	Dr. Laura Elena Raileanu\\
+	Fabien Dutoit
+}
+
+%-------------------------------------------------------------------------------
+%	DOCUMENT
+%-------------------------------------------------------------------------------
+
+
+%	HEAD: Book-Begin
+%-------------------------------------------------------------------------------
+\begin{document}
+
+\frontmatter
+\input{head/titlepage.tex}
+\setcounter{page}{0}
+
+\tableofcontents
+\clearpage
+
+% % space before each new paragraph according to the template guidelines.
+% %(needs to be after titlepage and frontmatter to keep the table of contents lists short)
+\setlength{\parskip}{1em}
+
+
+%	MAIN: The chapters of the report
+%-------------------------------------------------------------------------------
+\mainmatter
+\include{main/1_introduction}
+\include{main/2_install_and_config}
+\include{main/3_analyse}
+\include{main/4_conclusion}
+
+
+%	TAIL: Bibliography, Appendix, etc.
+%-------------------------------------------------------------------------------
+%\include{tail/appendix}
+\backmatter
+%\include{tail/bibliography}
+% Add your glossary here
+% Add your index here
+% Photographic credits (list of pictures&images that have been used with names of the person holding the copyright for them)
+
+\end{document}
