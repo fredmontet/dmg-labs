@@ -1,0 +1,1348 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.REPTree -M 2 -V 0.001 -N 10 -S 42 -L -1 -P -I 0.0 -batch-size 200
+Relation:     QueryResult-weka.filters.unsupervised.attribute.Remove-R1-7,9,11,14,16,18,21-25
+Instances:    18484
+Attributes:   8
+              MaritalStatus
+              Gender
+              YearlyIncome
+              TotalChildren
+              EnglishEducation
+              EnglishOccupation
+              HouseOwnerFlag
+              NumberCarsOwned
+Test mode:    split 80.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+
+REPTree
+============
+
+YearlyIncome < 45000
+|   YearlyIncome < 25000
+|   |   EnglishEducation = Bachelors
+|   |   |   YearlyIncome < 15000
+|   |   |   |   TotalChildren < 1.5
+|   |   |   |   |   Gender = M
+|   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   HouseOwnerFlag = 1 : Manual (27/1) [0/0]
+|   |   |   |   |   |   |   HouseOwnerFlag = 0 : Manual (3/0) [0/0]
+|   |   |   |   |   |   MaritalStatus = S : Manual (11/0) [0/0]
+|   |   |   |   |   Gender = F
+|   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   MaritalStatus = M : Manual (21/1) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S : Manual (7/0) [0/0]
+|   |   |   |   |   |   HouseOwnerFlag = 0 : Manual (8/1) [0/0]
+|   |   |   |   TotalChildren >= 1.5 : Clerical (19/0) [0/0]
+|   |   |   YearlyIncome >= 15000
+|   |   |   |   TotalChildren < 0.5 : Clerical (108/0) [0/0]
+|   |   |   |   TotalChildren >= 0.5
+|   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   MaritalStatus = M : Clerical (50/5) [0/0]
+|   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   Gender = M : Clerical (11/1) [0/0]
+|   |   |   |   |   |   |   Gender = F : Clerical (11/3) [0/0]
+|   |   |   |   |   HouseOwnerFlag = 0 : Clerical (8/0) [0/0]
+|   |   EnglishEducation = Partial College
+|   |   |   NumberCarsOwned < 1.5
+|   |   |   |   TotalChildren < 1.5 : Manual (465/0) [0/0]
+|   |   |   |   TotalChildren >= 1.5
+|   |   |   |   |   YearlyIncome < 15000 : Manual (120/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 15000
+|   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   Gender = M : Manual (31/0) [0/0]
+|   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   NumberCarsOwned < 0.5 : Manual (3/0) [0/0]
+|   |   |   |   |   |   |   |   NumberCarsOwned >= 0.5
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Manual (30/1) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Manual (2/0) [0/0]
+|   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   NumberCarsOwned < 0.5 : Manual (3/0) [0/0]
+|   |   |   |   |   |   |   NumberCarsOwned >= 0.5
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   Gender = M : Manual (13/1) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F : Manual (10/1) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Manual (32/2) [0/0]
+|   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   YearlyIncome < 15000 : Manual (32/0) [0/0]
+|   |   |   |   YearlyIncome >= 15000
+|   |   |   |   |   TotalChildren < 1 : Skilled Manual (5/0) [0/0]
+|   |   |   |   |   TotalChildren >= 1 : Clerical (2/0) [0/0]
+|   |   EnglishEducation = High School
+|   |   |   NumberCarsOwned < 1.5 : Manual (519/0) [0/0]
+|   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   TotalChildren < 3.5
+|   |   |   |   |   TotalChildren < 1.5 : Manual (39/0) [0/0]
+|   |   |   |   |   TotalChildren >= 1.5
+|   |   |   |   |   |   YearlyIncome < 15000
+|   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (7/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (8/3) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (6/3) [0/0]
+|   |   |   |   |   |   |   |   TotalChildren >= 2.5 : Manual (2/0) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   Gender = M : Manual (7/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Manual (5/0) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (2/1) [0/0]
+|   |   |   |   |   |   |   |   TotalChildren >= 2.5 : Manual (2/0) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 15000
+|   |   |   |   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   Gender = M : Manual (8/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Manual (5/0) [0/0]
+|   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   Gender = M : Manual (13/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Manual (15/2) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Manual (29/0) [0/0]
+|   |   |   |   |   |   |   TotalChildren >= 2.5
+|   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (3/0) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5
+|   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Manual (7/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Manual (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Manual (8/2) [0/0]
+|   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Manual (2/0) [0/0]
+|   |   |   |   TotalChildren >= 3.5
+|   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   YearlyIncome < 15000
+|   |   |   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Manual (3/1) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Manual (17/0) [0/0]
+|   |   |   |   |   |   |   TotalChildren >= 4.5 : Skilled Manual (11/0) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 15000
+|   |   |   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (22/0) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (13/1) [0/0]
+|   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (15/3) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (8/2) [0/0]
+|   |   |   |   |   |   |   TotalChildren >= 4.5 : Manual (2/0) [0/0]
+|   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   YearlyIncome < 15000
+|   |   |   |   |   |   |   |   TotalChildren < 4.5 : Manual (3/0) [0/0]
+|   |   |   |   |   |   |   |   TotalChildren >= 4.5 : Skilled Manual (4/0) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 15000
+|   |   |   |   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5
+|   |   |   |   |   |   |   |   |   |   Gender = M : Manual (5/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Manual (13/6) [0/0]
+|   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Manual (2/0) [0/0]
+|   |   |   |   |   |   |   |   TotalChildren >= 4.5 : Manual (7/0) [0/0]
+|   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   YearlyIncome < 15000
+|   |   |   |   |   |   |   |   TotalChildren < 4.5 : Manual (5/0) [0/0]
+|   |   |   |   |   |   |   |   TotalChildren >= 4.5 : Skilled Manual (5/0) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 15000 : Skilled Manual (6/0) [0/0]
+|   |   EnglishEducation = Partial High School
+|   |   |   TotalChildren < 1 : Manual (429/0) [0/0]
+|   |   |   TotalChildren >= 1
+|   |   |   |   YearlyIncome < 15000
+|   |   |   |   |   TotalChildren < 2.5 : Clerical (57/0) [0/0]
+|   |   |   |   |   TotalChildren >= 2.5
+|   |   |   |   |   |   HouseOwnerFlag = 1 : Manual (126/0) [0/0]
+|   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   TotalChildren < 3.5 : Manual (6/0) [0/0]
+|   |   |   |   |   |   |   |   TotalChildren >= 3.5
+|   |   |   |   |   |   |   |   |   Gender = M : Manual (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F : Clerical (2/1) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S : Manual (10/0) [0/0]
+|   |   |   |   YearlyIncome >= 15000
+|   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   NumberCarsOwned < 1.5 : Manual (2/0) [0/0]
+|   |   |   |   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   |   |   |   TotalChildren < 2.5 : Clerical (119/0) [0/0]
+|   |   |   |   |   |   |   TotalChildren >= 2.5
+|   |   |   |   |   |   |   |   MaritalStatus = M : Clerical (2/1) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   Gender = M : Clerical (9/0) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   TotalChildren < 4 : Clerical (17/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   TotalChildren >= 4 : Clerical (3/0) [0/0]
+|   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   |   |   Gender = M : Clerical (21/5) [0/0]
+|   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   MaritalStatus = M : Clerical (10/4) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S : Manual (5/2) [0/0]
+|   |   |   |   |   |   TotalChildren >= 2.5
+|   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   NumberCarsOwned < 3
+|   |   |   |   |   |   |   |   |   Gender = M : Clerical (9/4) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F : Clerical (6/2) [0/0]
+|   |   |   |   |   |   |   |   NumberCarsOwned >= 3 : Clerical (2/0) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   Gender = M : Clerical (29/0) [0/0]
+|   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   TotalChildren < 4 : Clerical (21/2) [0/0]
+|   |   |   |   |   |   |   |   |   TotalChildren >= 4 : Clerical (3/0) [0/0]
+|   |   EnglishEducation = Graduate Degree
+|   |   |   YearlyIncome < 15000
+|   |   |   |   TotalChildren < 0.5 : Manual (14/0) [0/0]
+|   |   |   |   TotalChildren >= 0.5
+|   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   MaritalStatus = M : Manual (14/2) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S : Manual (6/0) [0/0]
+|   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   MaritalStatus = M : Manual (14/2) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S : Manual (4/1) [0/0]
+|   |   |   |   |   HouseOwnerFlag = 0 : Manual (8/2) [0/0]
+|   |   |   YearlyIncome >= 15000
+|   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   Gender = M : Clerical (35/2) [0/0]
+|   |   |   |   |   |   Gender = F : Clerical (28/1) [0/0]
+|   |   |   |   |   MaritalStatus = S : Clerical (28/2) [0/0]
+|   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   MaritalStatus = M : Clerical (6/2) [0/0]
+|   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   Gender = M : Clerical (3/0) [0/0]
+|   |   |   |   |   |   Gender = F : Clerical (6/1) [0/0]
+|   YearlyIncome >= 25000
+|   |   EnglishEducation = Bachelors
+|   |   |   TotalChildren < 0.5
+|   |   |   |   NumberCarsOwned < 0.5
+|   |   |   |   |   YearlyIncome < 35000 : Clerical (119/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 35000
+|   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   Gender = M : Professional (36/18) [0/0]
+|   |   |   |   |   |   |   |   Gender = F : Clerical (36/12) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   Gender = M : Professional (10/4) [0/0]
+|   |   |   |   |   |   |   |   Gender = F : Professional (7/1) [0/0]
+|   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   MaritalStatus = M : Clerical (8/3) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S : Professional (18/5) [0/0]
+|   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   MaritalStatus = M : Professional (20/4) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S : Professional (12/6) [0/0]
+|   |   |   |   NumberCarsOwned >= 0.5 : Professional (146/0) [0/0]
+|   |   |   TotalChildren >= 0.5
+|   |   |   |   YearlyIncome < 35000
+|   |   |   |   |   NumberCarsOwned < 0.5
+|   |   |   |   |   |   TotalChildren < 1.5 : Clerical (186/0) [0/0]
+|   |   |   |   |   |   TotalChildren >= 1.5 : Clerical (45/1) [0/0]
+|   |   |   |   |   NumberCarsOwned >= 0.5
+|   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   NumberCarsOwned < 1.5
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (45/12) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (31/7) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (2/1) [0/0]
+|   |   |   |   |   |   |   NumberCarsOwned >= 1.5 : Skilled Manual (70/0) [0/0]
+|   |   |   |   |   |   MaritalStatus = S : Clerical (30/0) [0/0]
+|   |   |   |   YearlyIncome >= 35000
+|   |   |   |   |   TotalChildren < 1.5
+|   |   |   |   |   |   Gender = M : Skilled Manual (186/0) [0/0]
+|   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   NumberCarsOwned < 0.5
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (126/1) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (5/0) [0/0]
+|   |   |   |   |   |   |   NumberCarsOwned >= 0.5 : Skilled Manual (66/0) [0/0]
+|   |   |   |   |   TotalChildren >= 1.5
+|   |   |   |   |   |   NumberCarsOwned < 0.5 : Skilled Manual (10/0) [0/0]
+|   |   |   |   |   |   NumberCarsOwned >= 0.5
+|   |   |   |   |   |   |   NumberCarsOwned < 1.5
+|   |   |   |   |   |   |   |   MaritalStatus = M : Management (16/2) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S : Management (9/3) [0/0]
+|   |   |   |   |   |   |   NumberCarsOwned >= 1.5 : Management (112/0) [0/0]
+|   |   EnglishEducation = Partial College
+|   |   |   TotalChildren < 0.5
+|   |   |   |   YearlyIncome < 35000
+|   |   |   |   |   NumberCarsOwned < 1.5
+|   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   MaritalStatus = M : Skilled Manual (15/0) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   Gender = M : Clerical (32/11) [0/0]
+|   |   |   |   |   |   |   |   Gender = F : Clerical (43/10) [0/0]
+|   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   MaritalStatus = M : Clerical (15/4) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S : Clerical (82/7) [0/0]
+|   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   MaritalStatus = M : Clerical (11/0) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S : Clerical (103/21) [0/0]
+|   |   |   |   |   NumberCarsOwned >= 1.5 : Skilled Manual (25/0) [0/0]
+|   |   |   |   YearlyIncome >= 35000 : Skilled Manual (164/0) [0/0]
+|   |   |   TotalChildren >= 0.5
+|   |   |   |   NumberCarsOwned < 1.5
+|   |   |   |   |   YearlyIncome < 35000
+|   |   |   |   |   |   NumberCarsOwned < 0.5
+|   |   |   |   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Clerical (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Manual (13/6) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Clerical (4/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Clerical (2/0) [0/0]
+|   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Clerical (10/0) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Clerical (4/1) [0/0]
+|   |   |   |   |   |   |   TotalChildren >= 2.5 : Clerical (23/0) [0/0]
+|   |   |   |   |   |   NumberCarsOwned >= 0.5
+|   |   |   |   |   |   |   TotalChildren < 1.5
+|   |   |   |   |   |   |   |   Gender = M : Clerical (18/0) [0/0]
+|   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   MaritalStatus = M : Clerical (10/0) [0/0]
+|   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Clerical (9/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Clerical (4/0) [0/0]
+|   |   |   |   |   |   |   TotalChildren >= 1.5 : Clerical (68/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 35000 : Clerical (480/0) [0/0]
+|   |   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   |   YearlyIncome < 35000 : Clerical (284/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 35000
+|   |   |   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (7/3) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (10/2) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (8/4) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F : Clerical (4/1) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   Gender = M : Clerical (15/2) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F : Clerical (20/3) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (4/2) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F : Clerical (6/1) [0/0]
+|   |   |   |   |   |   TotalChildren >= 2.5
+|   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   TotalChildren < 3.5
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   Gender = M : Professional (21/7) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Professional (22/7) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   Gender = M : Professional (18/6) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Professional (23/3) [0/0]
+|   |   |   |   |   |   |   |   TotalChildren >= 3.5 : Professional (6/0) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   TotalChildren < 3.5 : Clerical (20/10) [0/0]
+|   |   |   |   |   |   |   |   |   |   TotalChildren >= 3.5 : Clerical (4/0) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   TotalChildren < 3.5 : Clerical (19/6) [0/0]
+|   |   |   |   |   |   |   |   |   |   TotalChildren >= 3.5 : Professional (9/4) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   TotalChildren < 3.5
+|   |   |   |   |   |   |   |   |   |   Gender = M : Professional (8/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Professional (10/4) [0/0]
+|   |   |   |   |   |   |   |   |   TotalChildren >= 3.5
+|   |   |   |   |   |   |   |   |   |   Gender = M : Professional (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Professional (2/0) [0/0]
+|   |   EnglishEducation = High School
+|   |   |   NumberCarsOwned < 1.5
+|   |   |   |   TotalChildren < 0.5
+|   |   |   |   |   YearlyIncome < 35000 : Manual (170/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 35000 : Skilled Manual (22/0) [0/0]
+|   |   |   |   TotalChildren >= 0.5
+|   |   |   |   |   YearlyIncome < 35000
+|   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   Gender = M : Clerical (21/2) [0/0]
+|   |   |   |   |   |   |   Gender = F : Clerical (19/2) [0/0]
+|   |   |   |   |   |   HouseOwnerFlag = 0 : Clerical (15/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 35000
+|   |   |   |   |   |   TotalChildren < 3.5
+|   |   |   |   |   |   |   MaritalStatus = M : Professional (5/0) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S : Professional (3/1) [0/0]
+|   |   |   |   |   |   TotalChildren >= 3.5 : Skilled Manual (2/0) [0/0]
+|   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   TotalChildren < 0.5
+|   |   |   |   |   YearlyIncome < 35000
+|   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (31/1) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (8/0) [0/0]
+|   |   |   |   |   |   |   Gender = F : Skilled Manual (26/0) [0/0]
+|   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (18/2) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (28/3) [0/0]
+|   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (28/2) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (22/1) [0/0]
+|   |   |   |   |   YearlyIncome >= 35000
+|   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (176/0) [0/0]
+|   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   Gender = M : Skilled Manual (61/0) [0/0]
+|   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   MaritalStatus = M : Skilled Manual (12/0) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S : Skilled Manual (62/1) [0/0]
+|   |   |   |   TotalChildren >= 0.5
+|   |   |   |   |   TotalChildren < 1.5 : Clerical (21/0) [0/0]
+|   |   |   |   |   TotalChildren >= 1.5
+|   |   |   |   |   |   TotalChildren < 3.5
+|   |   |   |   |   |   |   YearlyIncome < 35000
+|   |   |   |   |   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Skilled Manual (33/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Skilled Manual (15/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (30/0) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Skilled Manual (18/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Skilled Manual (6/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Skilled Manual (19/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Skilled Manual (9/2) [0/0]
+|   |   |   |   |   |   |   |   TotalChildren >= 2.5 : Skilled Manual (75/0) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 35000
+|   |   |   |   |   |   |   |   TotalChildren < 2.5 : Professional (62/0) [0/0]
+|   |   |   |   |   |   |   |   TotalChildren >= 2.5 : Skilled Manual (9/0) [0/0]
+|   |   |   |   |   |   TotalChildren >= 3.5
+|   |   |   |   |   |   |   YearlyIncome < 35000 : Professional (67/0) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 35000
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (26/8) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (30/13) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (21/10) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (12/5) [0/0]
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Skilled Manual (42/0) [0/0]
+|   |   |   |   |   |   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (4/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Skilled Manual (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5
+|   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (7/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (7/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (2/1) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (19/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (7/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (6/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (8/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Skilled Manual (3/0) [0/0]
+|   |   |   |   |   |   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5 : Professional (7/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Professional (4/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (8/0) [0/0]
+|   |   EnglishEducation = Partial High School
+|   |   |   TotalChildren < 1
+|   |   |   |   YearlyIncome < 35000
+|   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   Gender = M : Clerical (6/1) [0/0]
+|   |   |   |   |   |   Gender = F : Clerical (11/1) [0/0]
+|   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   MaritalStatus = M : Clerical (6/0) [0/0]
+|   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   Gender = M : Clerical (42/1) [0/0]
+|   |   |   |   |   |   |   Gender = F : Clerical (23/1) [0/0]
+|   |   |   |   YearlyIncome >= 35000 : Clerical (48/0) [0/0]
+|   |   |   TotalChildren >= 1
+|   |   |   |   TotalChildren < 2.5 : Skilled Manual (47/1) [0/0]
+|   |   |   |   TotalChildren >= 2.5
+|   |   |   |   |   NumberCarsOwned < 2.5 : Clerical (41/0) [0/0]
+|   |   |   |   |   NumberCarsOwned >= 2.5
+|   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (8/0) [0/0]
+|   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (4/2) [0/0]
+|   |   EnglishEducation = Graduate Degree
+|   |   |   TotalChildren < 2
+|   |   |   |   TotalChildren < 0.5
+|   |   |   |   |   YearlyIncome < 35000 : Skilled Manual (9/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 35000
+|   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   Gender = M : Clerical (46/7) [0/0]
+|   |   |   |   |   |   |   |   Gender = F : Clerical (63/11) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   Gender = M : Clerical (22/4) [0/0]
+|   |   |   |   |   |   |   |   Gender = F : Clerical (22/5) [0/0]
+|   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   MaritalStatus = M : Clerical (7/0) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   Gender = M : Skilled Manual (15/7) [0/0]
+|   |   |   |   |   |   |   |   Gender = F : Clerical (17/7) [0/0]
+|   |   |   |   TotalChildren >= 0.5
+|   |   |   |   |   YearlyIncome < 35000 : Clerical (36/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 35000
+|   |   |   |   |   |   NumberCarsOwned < 0.5
+|   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (27/4) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (32/5) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (5/0) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   Gender = M : Skilled Manual (10/5) [0/0]
+|   |   |   |   |   |   |   |   Gender = F : Skilled Manual (9/0) [0/0]
+|   |   |   |   |   |   NumberCarsOwned >= 0.5 : Skilled Manual (7/0) [0/0]
+|   |   |   TotalChildren >= 2 : Clerical (151/0) [0/0]
+YearlyIncome >= 45000
+|   YearlyIncome < 95000
+|   |   EnglishEducation = Bachelors
+|   |   |   YearlyIncome < 55000
+|   |   |   |   NumberCarsOwned < 1.5
+|   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (155/0) [0/0]
+|   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (32/1) [0/0]
+|   |   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   |   NumberCarsOwned < 2.5
+|   |   |   |   |   |   TotalChildren < 3.5
+|   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (11/4) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (2/0) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Management (4/1) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (5/2) [0/0]
+|   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   MaritalStatus = M : Skilled Manual (11/3) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S : Skilled Manual (12/3) [0/0]
+|   |   |   |   |   |   TotalChildren >= 3.5
+|   |   |   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   Gender = M : Management (17/6) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F : Management (13/0) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Management (5/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Management (5/2) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (12/5) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Management (13/4) [0/0]
+|   |   |   |   |   |   |   TotalChildren >= 4.5 : Skilled Manual (2/0) [0/0]
+|   |   |   |   |   NumberCarsOwned >= 2.5 : Skilled Manual (34/0) [0/0]
+|   |   |   YearlyIncome >= 55000
+|   |   |   |   TotalChildren < 1.5
+|   |   |   |   |   YearlyIncome < 75000
+|   |   |   |   |   |   NumberCarsOwned < 0.5 : Skilled Manual (3/0) [0/0]
+|   |   |   |   |   |   NumberCarsOwned >= 0.5
+|   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   TotalChildren < 0.5 : Professional (76/0) [0/0]
+|   |   |   |   |   |   |   |   TotalChildren >= 0.5
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   YearlyIncome < 65000
+|   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (36/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (43/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   YearlyIncome >= 65000
+|   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (3/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (6/1) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (7/0) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S : Professional (440/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 75000
+|   |   |   |   |   |   NumberCarsOwned < 1.5
+|   |   |   |   |   |   |   YearlyIncome < 85000
+|   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   Gender = M : Management (18/0) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Management (8/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Management (5/0) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S : Management (59/0) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 85000 : Professional (47/0) [0/0]
+|   |   |   |   |   |   NumberCarsOwned >= 1.5 : Professional (273/0) [0/0]
+|   |   |   |   TotalChildren >= 1.5
+|   |   |   |   |   NumberCarsOwned < 3.5
+|   |   |   |   |   |   TotalChildren < 3.5
+|   |   |   |   |   |   |   YearlyIncome < 85000
+|   |   |   |   |   |   |   |   YearlyIncome < 65000
+|   |   |   |   |   |   |   |   |   NumberCarsOwned < 0.5
+|   |   |   |   |   |   |   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Management (27/7) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Management (25/6) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Management (5/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Management (3/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Management (12/5) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Management (10/4) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (11/5) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (12/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   TotalChildren >= 2.5
+|   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (7/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (4/1) [0/0]
+|   |   |   |   |   |   |   |   |   NumberCarsOwned >= 0.5
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 1.5
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   TotalChildren < 2.5 : Professional (29/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   TotalChildren >= 2.5 : Professional (12/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (31/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (9/4) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (16/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   TotalChildren >= 2.5
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (5/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (10/5) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   TotalChildren < 2.5 : Professional (14/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   TotalChildren >= 2.5 : Professional (7/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (21/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (25/6) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (18/6) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (12/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (13/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Management (5/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (10/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (3/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Management (12/5) [0/0]
+|   |   |   |   |   |   |   |   YearlyIncome >= 65000
+|   |   |   |   |   |   |   |   |   NumberCarsOwned < 1.5
+|   |   |   |   |   |   |   |   |   |   YearlyIncome < 75000
+|   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 0.5 : Skilled Manual (19/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 0.5
+|   |   |   |   |   |   |   |   |   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Skilled Manual (14/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Management (9/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Skilled Manual (15/6) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Skilled Manual (12/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (28/12) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   TotalChildren >= 2.5 : Management (5/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   YearlyIncome >= 75000
+|   |   |   |   |   |   |   |   |   |   |   TotalChildren < 2.5 : Management (17/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   TotalChildren >= 2.5
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 0.5 : Skilled Manual (9/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 0.5
+|   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Management (10/5) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Management (5/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Management (7/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (6/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (7/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Management (2/1) [0/0]
+|   |   |   |   |   |   |   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Skilled Manual (5/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (5/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (13/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Skilled Manual (10/0) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 85000
+|   |   |   |   |   |   |   |   NumberCarsOwned < 0.5 : Professional (55/0) [0/0]
+|   |   |   |   |   |   |   |   NumberCarsOwned >= 0.5
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   Gender = M : Professional (8/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (5/1) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (2/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Management (5/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Management (4/0) [0/0]
+|   |   |   |   |   |   TotalChildren >= 3.5
+|   |   |   |   |   |   |   YearlyIncome < 65000
+|   |   |   |   |   |   |   |   NumberCarsOwned < 1.5
+|   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (49/0) [0/0]
+|   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   TotalChildren < 4.5 : Professional (11/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (3/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (2/1) [0/0]
+|   |   |   |   |   |   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   |   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Management (51/29) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Management (11/4) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Management (41/17) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (2/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (20/9) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Management (15/8) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (14/6) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (19/5) [0/0]
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (16/8) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (10/5) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (5/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (6/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (9/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (4/0) [0/0]
+|   |   |   |   |   |   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5 : Professional (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Management (15/4) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Management (23/7) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Management (4/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Management (5/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (7/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (2/0) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 65000
+|   |   |   |   |   |   |   |   NumberCarsOwned < 2.5
+|   |   |   |   |   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 1.5
+|   |   |   |   |   |   |   |   |   |   |   YearlyIncome < 85000
+|   |   |   |   |   |   |   |   |   |   |   |   YearlyIncome < 75000 : Management (31/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   YearlyIncome >= 75000
+|   |   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 0.5
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Management (14/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Management (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Management (5/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Management (11/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 0.5 : Management (5/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   YearlyIncome >= 85000
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 0.5
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Professional (6/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (11/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 0.5 : Management (33/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   |   |   |   |   |   |   |   YearlyIncome < 75000
+|   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Management (43/19) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (19/7) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Management (6/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (19/7) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Management (30/8) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (4/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (12/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   YearlyIncome >= 75000
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Management (15/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   |   |   YearlyIncome < 85000 : Management (2/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   YearlyIncome >= 85000 : Management (4/0) [0/0]
+|   |   |   |   |   |   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 1.5
+|   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 0.5 : Professional (2/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 0.5 : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   |   |   |   |   |   |   |   YearlyIncome < 85000
+|   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   YearlyIncome < 75000
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Management (41/5) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Management (28/5) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (4/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   YearlyIncome >= 75000 : Management (40/4) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (17/8) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Management (12/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   YearlyIncome >= 85000 : Management (50/0) [0/0]
+|   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5
+|   |   |   |   |   |   |   |   |   YearlyIncome < 75000
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   TotalChildren < 4.5 : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (17/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (15/6) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (10/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (5/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   TotalChildren < 4.5 : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Management (15/6) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (17/7) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Management (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   YearlyIncome >= 75000 : Professional (11/0) [0/0]
+|   |   |   |   |   NumberCarsOwned >= 3.5
+|   |   |   |   |   |   YearlyIncome < 75000
+|   |   |   |   |   |   |   YearlyIncome < 65000
+|   |   |   |   |   |   |   |   Gender = M : Professional (3/0) [0/0]
+|   |   |   |   |   |   |   |   Gender = F : Professional (2/1) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 65000
+|   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   TotalChildren < 4.5 : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (17/4) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (7/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (2/1) [0/0]
+|   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Professional (20/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (4/0) [0/0]
+|   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (5/1) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 75000 : Professional (58/0) [0/0]
+|   |   EnglishEducation = Partial College
+|   |   |   TotalChildren < 1.5
+|   |   |   |   TotalChildren < 0.5
+|   |   |   |   |   YearlyIncome < 80000
+|   |   |   |   |   |   NumberCarsOwned < 1.5 : Skilled Manual (129/0) [0/0]
+|   |   |   |   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   YearlyIncome < 65000
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (40/10) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (13/2) [0/0]
+|   |   |   |   |   |   |   |   |   YearlyIncome >= 65000
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (13/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (6/2) [0/0]
+|   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   YearlyIncome < 65000 : Skilled Manual (47/15) [0/0]
+|   |   |   |   |   |   |   |   |   |   YearlyIncome >= 65000 : Skilled Manual (19/9) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   YearlyIncome < 65000 : Professional (14/7) [0/0]
+|   |   |   |   |   |   |   |   |   |   YearlyIncome >= 65000 : Skilled Manual (6/2) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   YearlyIncome < 65000
+|   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Professional (31/15) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (47/18) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (22/6) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (42/15) [0/0]
+|   |   |   |   |   |   |   |   YearlyIncome >= 65000
+|   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (13/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (18/4) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (15/7) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (22/9) [0/0]
+|   |   |   |   |   YearlyIncome >= 80000 : Professional (46/0) [0/0]
+|   |   |   |   TotalChildren >= 0.5 : Skilled Manual (473/0) [0/0]
+|   |   |   TotalChildren >= 1.5
+|   |   |   |   NumberCarsOwned < 1.5
+|   |   |   |   |   YearlyIncome < 65000 : Professional (115/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 65000
+|   |   |   |   |   |   TotalChildren < 3.5
+|   |   |   |   |   |   |   NumberCarsOwned < 0.5 : Professional (58/0) [0/0]
+|   |   |   |   |   |   |   NumberCarsOwned >= 0.5
+|   |   |   |   |   |   |   |   YearlyIncome < 85000
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   YearlyIncome < 75000
+|   |   |   |   |   |   |   |   |   |   |   |   |   TotalChildren < 2.5 : Professional (18/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   TotalChildren >= 2.5 : Professional (4/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   YearlyIncome >= 75000
+|   |   |   |   |   |   |   |   |   |   |   |   |   TotalChildren < 2.5 : Professional (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   TotalChildren >= 2.5 : Professional (4/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (6/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Professional (27/0) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   TotalChildren < 2.5 : Professional (5/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   TotalChildren >= 2.5 : Professional (10/0) [0/0]
+|   |   |   |   |   |   |   |   YearlyIncome >= 85000 : Professional (29/0) [0/0]
+|   |   |   |   |   |   TotalChildren >= 3.5 : Professional (111/0) [0/0]
+|   |   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   |   YearlyIncome < 65000
+|   |   |   |   |   |   TotalChildren < 2.5 : Professional (167/0) [0/0]
+|   |   |   |   |   |   TotalChildren >= 2.5 : Skilled Manual (5/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 65000
+|   |   |   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   |   |   YearlyIncome < 75000
+|   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   Gender = M : Professional (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (3/1) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S : Skilled Manual (4/0) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 75000 : Skilled Manual (48/0) [0/0]
+|   |   |   |   |   |   TotalChildren >= 2.5
+|   |   |   |   |   |   |   YearlyIncome < 75000
+|   |   |   |   |   |   |   |   TotalChildren < 4.5 : Professional (66/0) [0/0]
+|   |   |   |   |   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5 : Skilled Manual (16/5) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Skilled Manual (23/6) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5 : Skilled Manual (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Skilled Manual (4/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (10/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (3/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (23/4) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (8/2) [0/0]
+|   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5 : Professional (5/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Professional (4/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5 : Skilled Manual (8/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Professional (2/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 75000
+|   |   |   |   |   |   |   |   YearlyIncome < 85000 : Professional (176/0) [0/0]
+|   |   |   |   |   |   |   |   YearlyIncome >= 85000
+|   |   |   |   |   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5 : Professional (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Professional (9/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5 : Professional (5/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Professional (8/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (9/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 2.5 : Skilled Manual (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Professional (4/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (6/0) [0/0]
+|   |   |   |   |   |   |   |   |   TotalChildren >= 4.5 : Professional (79/0) [0/0]
+|   |   EnglishEducation = High School
+|   |   |   NumberCarsOwned < 2.5
+|   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   YearlyIncome < 65000
+|   |   |   |   |   |   YearlyIncome < 55000
+|   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   Gender = M : Professional (5/2) [0/0]
+|   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   MaritalStatus = M : Skilled Manual (7/1) [0/0]
+|   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (2/1) [0/0]
+|   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   Gender = M : Skilled Manual (8/3) [0/0]
+|   |   |   |   |   |   |   |   Gender = F : Professional (3/0) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 55000 : Professional (217/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 65000
+|   |   |   |   |   |   YearlyIncome < 85000
+|   |   |   |   |   |   |   YearlyIncome < 75000
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (18/7) [0/0]
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (13/6) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (10/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (26/10) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   MaritalStatus = M : Skilled Manual (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   Gender = M : Professional (12/6) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (11/5) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 75000
+|   |   |   |   |   |   |   |   MaritalStatus = M : Skilled Manual (23/0) [0/0]
+|   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (24/2) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (13/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (14/4) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 85000 : Professional (27/0) [0/0]
+|   |   |   |   TotalChildren >= 2.5
+|   |   |   |   |   TotalChildren < 4.5 : Professional (156/0) [0/0]
+|   |   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   |   YearlyIncome < 75000 : Professional (25/0) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 75000 : Professional (9/2) [0/0]
+|   |   |   NumberCarsOwned >= 2.5
+|   |   |   |   YearlyIncome < 75000 : Professional (7/0) [0/0]
+|   |   |   |   YearlyIncome >= 75000
+|   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   YearlyIncome < 85000 : Professional (12/0) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 85000
+|   |   |   |   |   |   |   NumberCarsOwned < 3.5
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Management (20/9) [0/0]
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Management (9/3) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (15/7) [0/0]
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (9/4) [0/0]
+|   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   MaritalStatus = M : Management (8/0) [0/0]
+|   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   Gender = M : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   Gender = F : Professional (3/1) [0/0]
+|   |   |   |   |   |   |   NumberCarsOwned >= 3.5 : Professional (2/0) [0/0]
+|   |   |   |   |   TotalChildren >= 4.5 : Management (28/0) [0/0]
+|   |   EnglishEducation = Partial High School
+|   |   |   TotalChildren < 1
+|   |   |   |   YearlyIncome < 60000 : Skilled Manual (2/0) [0/0]
+|   |   |   |   YearlyIncome >= 60000 : Professional (3/0) [0/0]
+|   |   |   TotalChildren >= 1 : Skilled Manual (298/0) [0/0]
+|   |   EnglishEducation = Graduate Degree
+|   |   |   NumberCarsOwned < 0.5
+|   |   |   |   YearlyIncome < 55000 : Skilled Manual (174/0) [0/0]
+|   |   |   |   YearlyIncome >= 55000
+|   |   |   |   |   YearlyIncome < 85000
+|   |   |   |   |   |   TotalChildren < 3.5
+|   |   |   |   |   |   |   TotalChildren < 1.5
+|   |   |   |   |   |   |   |   YearlyIncome < 65000
+|   |   |   |   |   |   |   |   |   TotalChildren < 0.5
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (40/16) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (38/13) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (5/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (4/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (23/7) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (30/9) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (19/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (22/6) [0/0]
+|   |   |   |   |   |   |   |   |   TotalChildren >= 0.5
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (114/56) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (24/9) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (96/37) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (41/18) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (7/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (12/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (15/2) [0/0]
+|   |   |   |   |   |   |   |   YearlyIncome >= 65000
+|   |   |   |   |   |   |   |   |   TotalChildren < 0.5
+|   |   |   |   |   |   |   |   |   |   YearlyIncome < 75000 : Professional (8/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   YearlyIncome >= 75000
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (7/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (3/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (6/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S : Skilled Manual (22/0) [0/0]
+|   |   |   |   |   |   |   |   |   TotalChildren >= 0.5
+|   |   |   |   |   |   |   |   |   |   YearlyIncome < 75000
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Skilled Manual (9/4) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Skilled Manual (4/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (23/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (6/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (4/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   YearlyIncome >= 75000 : Professional (12/0) [0/0]
+|   |   |   |   |   |   |   TotalChildren >= 1.5 : Professional (217/0) [0/0]
+|   |   |   |   |   |   TotalChildren >= 3.5
+|   |   |   |   |   |   |   YearlyIncome < 65000 : Skilled Manual (92/0) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 65000
+|   |   |   |   |   |   |   |   YearlyIncome < 75000
+|   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (82/0) [0/0]
+|   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   TotalChildren < 4.5 : Professional (23/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (10/1) [0/0]
+|   |   |   |   |   |   |   |   YearlyIncome >= 75000
+|   |   |   |   |   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (11/4) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (8/5) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (7/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (25/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (6/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (6/0) [0/0]
+|   |   |   |   |   |   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (22/12) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (2/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Skilled Manual (11/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Skilled Manual (3/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Skilled Manual (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (3/1) [0/0]
+|   |   |   |   |   YearlyIncome >= 85000
+|   |   |   |   |   |   TotalChildren < 3.5 : Management (39/0) [0/0]
+|   |   |   |   |   |   TotalChildren >= 3.5 : Professional (2/0) [0/0]
+|   |   |   NumberCarsOwned >= 0.5
+|   |   |   |   TotalChildren < 0.5 : Professional (80/0) [0/0]
+|   |   |   |   TotalChildren >= 0.5
+|   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   NumberCarsOwned < 1.5
+|   |   |   |   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   |   |   |   YearlyIncome < 65000
+|   |   |   |   |   |   |   |   |   TotalChildren < 1.5 : Management (6/2) [0/0]
+|   |   |   |   |   |   |   |   |   TotalChildren >= 1.5 : Management (29/0) [0/0]
+|   |   |   |   |   |   |   |   YearlyIncome >= 65000
+|   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (11/3) [0/0]
+|   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (12/0) [0/0]
+|   |   |   |   |   |   |   TotalChildren >= 2.5 : Management (44/0) [0/0]
+|   |   |   |   |   |   NumberCarsOwned >= 1.5 : Management (402/0) [0/0]
+|   |   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   |   YearlyIncome < 75000
+|   |   |   |   |   |   |   NumberCarsOwned < 2.5
+|   |   |   |   |   |   |   |   NumberCarsOwned < 1.5 : Professional (11/0) [0/0]
+|   |   |   |   |   |   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (26/11) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (32/16) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   |   Gender = M : Management (9/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (9/4) [0/0]
+|   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   Gender = M : Management (7/3) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (9/4) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Professional (28/0) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 75000 : Management (60/0) [0/0]
+|   YearlyIncome >= 95000
+|   |   EnglishEducation = Bachelors
+|   |   |   NumberCarsOwned < 1.5
+|   |   |   |   YearlyIncome < 105000
+|   |   |   |   |   TotalChildren < 0.5 : Professional (19/0) [0/0]
+|   |   |   |   |   TotalChildren >= 0.5
+|   |   |   |   |   |   TotalChildren < 3.5 : Management (8/0) [0/0]
+|   |   |   |   |   |   TotalChildren >= 3.5
+|   |   |   |   |   |   |   TotalChildren < 4.5 : Professional (3/1) [0/0]
+|   |   |   |   |   |   |   TotalChildren >= 4.5 : Professional (8/0) [0/0]
+|   |   |   |   YearlyIncome >= 105000
+|   |   |   |   |   TotalChildren < 0.5
+|   |   |   |   |   |   Gender = M : Professional (2/1) [0/0]
+|   |   |   |   |   |   Gender = F : Management (3/0) [0/0]
+|   |   |   |   |   TotalChildren >= 0.5 : Management (36/0) [0/0]
+|   |   |   NumberCarsOwned >= 1.5
+|   |   |   |   TotalChildren < 4.5 : Management (582/0) [0/0]
+|   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   YearlyIncome < 125000 : Management (6/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 125000 : Professional (4/0) [0/0]
+|   |   EnglishEducation = Partial College
+|   |   |   TotalChildren < 0.5
+|   |   |   |   YearlyIncome < 105000 : Professional (35/0) [0/0]
+|   |   |   |   YearlyIncome >= 105000
+|   |   |   |   |   YearlyIncome < 120000 : Management (33/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 120000
+|   |   |   |   |   |   NumberCarsOwned < 3.5 : Professional (2/0) [0/0]
+|   |   |   |   |   |   NumberCarsOwned >= 3.5 : Management (6/0) [0/0]
+|   |   |   TotalChildren >= 0.5
+|   |   |   |   TotalChildren < 2.5
+|   |   |   |   |   YearlyIncome < 155000 : Professional (157/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 155000
+|   |   |   |   |   |   TotalChildren < 1.5 : Professional (8/0) [0/0]
+|   |   |   |   |   |   TotalChildren >= 1.5
+|   |   |   |   |   |   |   NumberCarsOwned < 3.5 : Management (4/0) [0/0]
+|   |   |   |   |   |   |   NumberCarsOwned >= 3.5 : Professional (3/0) [0/0]
+|   |   |   |   TotalChildren >= 2.5
+|   |   |   |   |   YearlyIncome < 140000
+|   |   |   |   |   |   YearlyIncome < 125000
+|   |   |   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   |   |   NumberCarsOwned < 3.5
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (20/8) [0/0]
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   YearlyIncome < 115000 : Professional (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   YearlyIncome >= 115000 : Professional (6/0) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = M : Professional (5/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   |   |   |   |   YearlyIncome < 115000 : Professional (2/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   YearlyIncome >= 115000 : Professional (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   Gender = F : Management (2/0) [0/0]
+|   |   |   |   |   |   |   |   NumberCarsOwned >= 3.5
+|   |   |   |   |   |   |   |   |   YearlyIncome < 105000
+|   |   |   |   |   |   |   |   |   |   TotalChildren < 3.5
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Professional (18/9) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   Gender = F
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Professional (13/5) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (2/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = M : Management (3/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   |   Gender = F : Professional (8/2) [0/0]
+|   |   |   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (4/1) [0/0]
+|   |   |   |   |   |   |   |   |   |   TotalChildren >= 3.5 : Professional (15/0) [0/0]
+|   |   |   |   |   |   |   |   |   YearlyIncome >= 105000 : Professional (48/0) [0/0]
+|   |   |   |   |   |   |   TotalChildren >= 4.5 : Professional (22/0) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 125000 : Professional (91/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 140000
+|   |   |   |   |   |   YearlyIncome < 165000
+|   |   |   |   |   |   |   NumberCarsOwned < 2.5 : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   NumberCarsOwned >= 2.5
+|   |   |   |   |   |   |   |   TotalChildren < 3.5 : Management (5/0) [0/0]
+|   |   |   |   |   |   |   |   TotalChildren >= 3.5
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Management (4/0) [0/0]
+|   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned < 3.5 : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   NumberCarsOwned >= 3.5 : Management (3/1) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 165000
+|   |   |   |   |   |   |   TotalChildren < 4.5 : Professional (10/0) [0/0]
+|   |   |   |   |   |   |   TotalChildren >= 4.5 : Management (3/1) [0/0]
+|   |   EnglishEducation = High School
+|   |   |   TotalChildren < 0.5
+|   |   |   |   YearlyIncome < 140000 : Management (142/0) [0/0]
+|   |   |   |   YearlyIncome >= 140000
+|   |   |   |   |   Gender = M : Management (3/1) [0/0]
+|   |   |   |   |   Gender = F : Professional (4/2) [0/0]
+|   |   |   TotalChildren >= 0.5
+|   |   |   |   TotalChildren < 3.5
+|   |   |   |   |   NumberCarsOwned < 3.5 : Professional (38/0) [0/0]
+|   |   |   |   |   NumberCarsOwned >= 3.5
+|   |   |   |   |   |   YearlyIncome < 140000
+|   |   |   |   |   |   |   YearlyIncome < 110000
+|   |   |   |   |   |   |   |   TotalChildren < 2.5 : Professional (12/0) [0/0]
+|   |   |   |   |   |   |   |   TotalChildren >= 2.5 : Management (5/0) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 110000 : Professional (65/0) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 140000
+|   |   |   |   |   |   |   MaritalStatus = M : Professional (10/0) [0/0]
+|   |   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   |   YearlyIncome < 165000
+|   |   |   |   |   |   |   |   |   YearlyIncome < 155000
+|   |   |   |   |   |   |   |   |   |   TotalChildren < 2.5 : Professional (3/0) [0/0]
+|   |   |   |   |   |   |   |   |   |   TotalChildren >= 2.5 : Management (4/1) [0/0]
+|   |   |   |   |   |   |   |   |   YearlyIncome >= 155000 : Management (3/0) [0/0]
+|   |   |   |   |   |   |   |   YearlyIncome >= 165000 : Professional (2/0) [0/0]
+|   |   |   |   TotalChildren >= 3.5
+|   |   |   |   |   NumberCarsOwned < 3.5
+|   |   |   |   |   |   YearlyIncome < 125000
+|   |   |   |   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   |   |   |   NumberCarsOwned < 2.5
+|   |   |   |   |   |   |   |   |   YearlyIncome < 115000 : Management (2/0) [0/0]
+|   |   |   |   |   |   |   |   |   YearlyIncome >= 115000 : Professional (2/0) [0/0]
+|   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5 : Management (17/0) [0/0]
+|   |   |   |   |   |   |   TotalChildren >= 4.5 : Professional (3/0) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 125000
+|   |   |   |   |   |   |   Gender = M
+|   |   |   |   |   |   |   |   NumberCarsOwned < 2.5 : Professional (4/0) [0/0]
+|   |   |   |   |   |   |   |   NumberCarsOwned >= 2.5
+|   |   |   |   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 1 : Professional (11/4) [0/0]
+|   |   |   |   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (5/2) [0/0]
+|   |   |   |   |   |   |   |   |   MaritalStatus = S : Professional (6/2) [0/0]
+|   |   |   |   |   |   |   Gender = F : Professional (12/0) [0/0]
+|   |   |   |   |   NumberCarsOwned >= 3.5
+|   |   |   |   |   |   YearlyIncome < 165000 : Management (55/0) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 165000 : Professional (3/1) [0/0]
+|   |   EnglishEducation = Partial High School
+|   |   |   YearlyIncome < 125000
+|   |   |   |   TotalChildren < 1
+|   |   |   |   |   YearlyIncome < 105000 : Professional (19/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 105000
+|   |   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   |   HouseOwnerFlag = 1
+|   |   |   |   |   |   |   |   YearlyIncome < 115000
+|   |   |   |   |   |   |   |   |   Gender = M : Professional (9/1) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F : Professional (7/1) [0/0]
+|   |   |   |   |   |   |   |   YearlyIncome >= 115000
+|   |   |   |   |   |   |   |   |   Gender = M : Professional (10/2) [0/0]
+|   |   |   |   |   |   |   |   |   Gender = F : Professional (15/2) [0/0]
+|   |   |   |   |   |   |   HouseOwnerFlag = 0 : Professional (6/0) [0/0]
+|   |   |   |   |   |   MaritalStatus = S
+|   |   |   |   |   |   |   HouseOwnerFlag = 1 : Professional (10/0) [0/0]
+|   |   |   |   |   |   |   HouseOwnerFlag = 0
+|   |   |   |   |   |   |   |   Gender = M : Professional (3/0) [0/0]
+|   |   |   |   |   |   |   |   Gender = F : Professional (5/1) [0/0]
+|   |   |   |   TotalChildren >= 1 : Professional (38/0) [0/0]
+|   |   |   YearlyIncome >= 125000
+|   |   |   |   TotalChildren < 4.5
+|   |   |   |   |   YearlyIncome < 140000 : Management (7/0) [0/0]
+|   |   |   |   |   YearlyIncome >= 140000
+|   |   |   |   |   |   TotalChildren < 3.5
+|   |   |   |   |   |   |   YearlyIncome < 155000 : Professional (4/1) [0/0]
+|   |   |   |   |   |   |   YearlyIncome >= 155000 : Professional (3/0) [0/0]
+|   |   |   |   |   |   TotalChildren >= 3.5 : Management (2/0) [0/0]
+|   |   |   |   TotalChildren >= 4.5
+|   |   |   |   |   MaritalStatus = M
+|   |   |   |   |   |   YearlyIncome < 155000
+|   |   |   |   |   |   |   Gender = M : Professional (3/0) [0/0]
+|   |   |   |   |   |   |   Gender = F : Professional (6/1) [0/0]
+|   |   |   |   |   |   YearlyIncome >= 155000 : Professional (3/1) [0/0]
+|   |   |   |   |   MaritalStatus = S : Professional (2/0) [0/0]
+|   |   EnglishEducation = Graduate Degree
+|   |   |   TotalChildren < 3.5 : Management (417/0) [0/0]
+|   |   |   TotalChildren >= 3.5
+|   |   |   |   YearlyIncome < 125000 : Management (3/1) [0/0]
+|   |   |   |   YearlyIncome >= 125000 : Professional (2/0) [0/0]
+
+Size of the tree : 1289
+
+Time taken to build model: 0.17 seconds
+
+=== Evaluation on test split ===
+
+Time taken to test model on training split: 0.02 seconds
+
+=== Summary ===
+
+Correctly Classified Instances        3375               91.2902 %
+Incorrectly Classified Instances       322                8.7098 %
+Kappa statistic                          0.8883
+Mean absolute error                      0.0434
+Root mean squared error                  0.1549
+Relative absolute error                 13.8991 %
+Root relative squared error             39.2271 %
+Total Number of Instances             3697     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.904    0.043    0.899      0.904    0.902      0.860    0.982     0.963     Professional
+                 0.912    0.019    0.909      0.912    0.910      0.892    0.992     0.970     Management
+                 0.873    0.035    0.892      0.873    0.882      0.844    0.981     0.945     Skilled Manual
+                 0.946    0.013    0.930      0.946    0.938      0.927    0.991     0.971     Clerical
+                 0.972    0.005    0.968      0.972    0.970      0.966    0.997     0.981     Manual
+Weighted Avg.    0.913    0.027    0.913      0.913    0.913      0.885    0.987     0.963     
+
+=== Confusion Matrix ===
+
+    a    b    c    d    e   <-- classified as
+ 1002   25   69   12    0 |    a = Professional
+   46  568    9    0    0 |    b = Management
+   62   32  802   20    3 |    c = Skilled Manual
+    4    0   15  545   12 |    d = Clerical
+    0    0    4    9  458 |    e = Manual
