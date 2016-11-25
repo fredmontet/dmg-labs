@@ -1,3 +1,43 @@
 \chapter{Installation et configuration}
 
-%TODO
+Dans notre situation nous avons décidé d'installé Weka sur une machine virtuelle Ubuntu 16.10.
+
+\section{Installation}
+
+Nous avons installé :
+
+\begin{itemize}
+	\item Java JDK 1.8\_111
+	\item Weka 3.8.0
+	\item Xampp x64 7.0.13 
+	\item MySQL connector for Java 5.1.39
+\end{itemize}
+
+Un élément à mentionner est que nous avons utilisé le connecteur dans sa version 5.1.39 alors que sur le site de MySQL\footnote{\url{https://dev.mysql.com/downloads/connector/j/}} il est disponible en 5.1.40. Ceci est dû au fait que nous avons utilisé la version disponible dans un repository ppa. L'installation à pu être faite avec la commande \texttt{sudo apt-get install libmysql-java}.
+
+Hormis le point cité au paragraphe ci dessus, cette étape n'a pas posé de problème particulier qu'il serait nécessaire de mentionner. Il a suffit de suivre les différents tutoriaux relatifs à chacun des logiciels à installer.
+
+\section{Configuration}
+
+Pour configurer la machine virtuelle, un seul point a posé problème: la connexion à la base de donnée MySQL depuis Weka en utilisant le connecteur MySQL Java.
+
+Le problème rencontré à été le prise en compte de la variable d'environnement \texttt{CLASSPATH} lors des tentatives de connexions. Sans cette variable, Weka ne trouve pas le connecteur.
+
+Après avoir efféctué une recherche, nous nous sommes rendu compte qu'avec Ubuntu, il fallait préciser le \texttt{CLASSPATH} dans la commande pour démarrer Weka à l'aide du paramètre \texttt{-cp}. Le listing \autoref{lst:shell} présente le \texttt{.sh} qui a été utilisé pour démarrer Weka et le connecter à MySQL avec succès.
+
+\begin{figure}[H]
+\centering
+\begin{lstlisting}	
+# Variables
+java8=/home/fredmontet/Desktop/lab02-weka/asset/java/jdk1.8.0_111/jre/bin/java
+weka=/home/fredmontet/Desktop/lab02-weka/asset/weka-3-8-0/weka.jar
+connector=/usr/share/java/mysql-connector-java.jar
+ 
+# Command
+export CLASSPATH=$connector:$CLASSPATH
+$java8 -Xmx300m -cp "$weka:$connector" weka.gui.GUIChooser
+\end{lstlisting}
+\caption{Contenu du fichier bash à exécuter pour lancer Weka}
+\label{lst:shell}
+\end{figure}
+
