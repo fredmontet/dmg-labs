@@ -30,7 +30,7 @@ Sur le listing \autoref{lst:reptree_run}, on observe les informations du run cho
 
 \begin{figure}[H]
 \centering
-\begin{lstlisting}	
+\begin{lstlisting}
 Scheme:       weka.classifiers.trees.REPTree -M 2 -V 0.001 -N 10 -S 42 -L -1 -P -I 0.0 -batch-size 200
 Relation:     QueryResult-weka.filters.unsupervised.attribute.Remove-R1-7,9,11,14,16,18,21-25
 Instances:    18484
@@ -49,7 +49,7 @@ Test mode:    split 80.0% train, remainder test
 \label{lst:reptree_run}
 \end{figure}
 
-Le résultat de ce run à montré que la moyenne pondérée des instances correctement classifiées est 91.29\%. La valeur de ce résultat est bonne et indique que notre modèle est bon. Cependant, seul ce résultat ne permet pas d'affirmer que le modèle est bon. Il est nécessaire d'observer les différentes métriques dans la partie \texttt{Detailed Accuracy By Class} du listing \autoref{lst:reptree_res} pour en savoir d'avantage. Sur ce dernier, on constate que \texttt{0.913} est la moyenne des métriques TP Rate, Precision, Recall et F-Measure pour les différentes classes. Notre analyse est donc confortée par la stabilité du résultat moyen de ces différentes métriques. 
+Le résultat de ce run à montré que la moyenne pondérée des instances correctement classifiées est 91.29\%. La valeur de ce résultat est bonne et indique que notre modèle est bon. Cependant, seul ce résultat ne permet pas d'affirmer que le modèle est bon. Il est nécessaire d'observer les différentes métriques dans la partie \texttt{Detailed Accuracy By Class} du listing \autoref{lst:reptree_res} pour en savoir d'avantage. Sur ce dernier, on constate que \texttt{0.913} est la moyenne des métriques TP Rate, Precision, Recall et F-Measure pour les différentes classes. Notre analyse est donc confortée par la stabilité du résultat moyen de ces différentes métriques.
 
 Maintenant, il est intéressant de savoir quelles sont les forces et faiblesses de notre modèle. Pour cela, nous baserons nos constats sur la F-Measure. Cette dernière étant robuste car elle prend en compte precision et recall. On y voit que la classe au meilleur score est \texttt{Manual} avec 0.970 et la moins bonne est \texttt{Skilled Manual} avec 0.882.
 
@@ -57,7 +57,7 @@ Afin d'améliorer notre modèle, on se concentrera donc sur la classes \texttt{S
 
 \begin{figure}[H]
 \centering
-\begin{lstlisting}	
+\begin{lstlisting}
 === Summary ===
 
 Correctly Classified Instances        3375               91.2902 %
@@ -67,7 +67,7 @@ Mean absolute error                      0.0434
 Root mean squared error                  0.1549
 Relative absolute error                 13.8991 %
 Root relative squared error             39.2271 %
-Total Number of Instances             3697     
+Total Number of Instances             3697
 
 === Detailed Accuracy By Class ===
 
@@ -78,9 +78,9 @@ TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Cl
 0.946    0.013    0.930      0.946    0.938      0.927    0.991     0.971     Clerical
 0.972    0.005    0.968      0.972    0.970      0.966    0.997     0.981     Manual
 
-Weighted Avg.    
+Weighted Avg.
 
-0.913    0.027    0.913      0.913    0.913      0.885    0.987     0.963     
+0.913    0.027    0.913      0.913    0.913      0.885    0.987     0.963
 
 === Confusion Matrix ===
 
@@ -95,13 +95,13 @@ Weighted Avg.
 \label{lst:reptree_res}
 \end{figure}
 
-Concernant l'arbre de décision, son début est visible dans le listing \autoref{lst:reptree_sample}. Sur cet exemple, on voit que la division commence par l'apport financier, puis l'éducation, les enfants, l'état civil et la possession d'une maison. 
+Concernant l'arbre de décision, son début est visible dans le listing \autoref{lst:reptree_sample}. Sur cet exemple, on voit que la division commence par l'apport financier, puis l'éducation, les enfants, l'état civil et la possession d'une maison.
 
 Il est intéressant de noter que juste après la division homme-femme, l'état civil et la possession d'une maison ont été interverti dans la branche M et F. Ceci met en évidence que la meilleure manière de diviser les classes est prise en compte en fonction de chacune des instances.
 
 \begin{figure}[H]
 \centering
-\begin{lstlisting}	
+\begin{lstlisting}
 YearlyIncome < 45000
 |   YearlyIncome < 25000
 |   |   EnglishEducation = Bachelors
@@ -129,4 +129,45 @@ YearlyIncome < 45000
 
 \section{Règles d'associations}
 
-%TODO
+Pour cette section, le filtre \textit{NumericToNominal} a été appliqué aux attributs \textit{NumberCarsOwned}, \textit{YearlyIncome} et \textit{TotalChildren}.
+
+Seul les algorithmes \textit{Apriori} et \textit{FilteredAssociator} ont été testé. Seul ceux-ci étaient disponible (voir \ref{associate}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth, fbox]{img/associate.png}
+    \caption{Règles d'associations : Algos disponible}
+    \label{associate}
+\end{figure}
+
+\subsection{Apriori}
+
+Le seuil minimum de confiance a été modifié pour obtenir plus de règles.
+
+Voici les paramètres :
+
+\begin{lstlisting}
+Apriori -N 10 -T 0 -C 0.8 -D 0.05 -U 1.0 -M 0.1 -S -1.0 -c 1
+\end{lstlisting}
+
+Et le résultat (figure \ref{apriori}).
+
+\begin{figure}[H]
+    \centering
+	\makebox[\textwidth][c]{\includegraphics[width=1.3\linewidth, fbox]{img/apriori.png}}%
+    \caption{Règles d'associations : Apriori résultat}
+    \label{apriori}
+\end{figure}
+
+\subsection{FilteredAssociator}
+
+Cet algorithme permet de créer des règles d'association filtrées.
+
+Les 10 règles obtenues (figure \ref{filtered}) sont identiques au résultat de l'\textit{Apriori}.
+
+\begin{figure}[H]
+    \centering
+	\makebox[\textwidth][c]{\includegraphics[width=1.3\linewidth, fbox]{img/filtered.png}}%
+    \caption{Règles d'associations : FilteredAssociator résultat}
+    \label{filtered}
+\end{figure}
