@@ -125,7 +125,57 @@ YearlyIncome < 45000
 
 \section{Clustering}
 
-%TODO
+%----------------------------------------------------------------------------------------
+\section{Clustering}
+%----------------------------------------------------------------------------------------
+
+    Nous passons maintenant à l'onglet suivant sur Weka qui est "Cluster". Le principe du clustering n'est pas de classifier selon un attribut, mais de regrouper les documents semblables. Nous allons cette fois utiliser deux algorithmes différents, mais en changeant les paramètres du premier. Il s'agit de l'algorithme SimpleKMeans avec 2 et 5 clusters.
+
+
+\subsection*{SimpleKMeans - 5 clusters}
+    
+    Notre premier exemple de clustering selon cet algorithme est fait selon 5 clusters (voir figure \ref{kmeans5}). Nous avons fait ce choix de 5 clusters car le nombre d'attributs profession est aussi égal à 5.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth, fbox]{img/clustering/kmeans_5.png}
+        \caption{Classification avec SimpleKMeans}
+        \label{kmeans5}
+    \end{figure}
+
+    Grâce à ce clustering, nous pouvons visualiser les clusters en deux dimensions selon deux attributs. Nous avons choisi de comparer la profession de l'individu (sur l'axe des X) avec son salaire annuel (sur l'axe des Y). La visualisation est à la figure \ref{kmeans5viz}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth, fbox]{img/clustering/kmeans_5_viz.png}
+        \caption{Visualisation de SimpleKMeans}
+        \label{kmeans5viz}
+    \end{figure}
+
+    On constate sur cette visualisation \ref{kmeans5viz} que certaines catégories d'EnglishOccupation on un salaire avec un seuil suppérieur infranchissable. A l'inverse, on constate que ce n'est pas le cas pour l'EnglishOccupation dans la catégorie Management.
+    \newpage
+
+\subsection*{SimpleKMeans - 2 clusters}
+    
+    Notre second exemple de classificaiton a été fait en comparant 2 clusters (voir figure \ref{kmeans2}).
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth, fbox]{img/clustering/kmeans_2.png}
+        \caption{Classification avec SimpleKMeans}
+        \label{kmeans2}
+    \end{figure}
+
+    Sur cet exemple nous comparons les sexes en X avec l'état civil en Y.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth, fbox]{img/clustering/kmeans_2_viz.png}
+        \caption{Visualisation de SimpleKMeans}
+        \label{kmeans2viz}
+    \end{figure}
+
+    On constate sur la figure \ref{kmeans2viz} que les clusters créés correspondent majoritairement à deux sous-groupes: les femmes mariées (coin inférieur droit) et les hommes célibataires (coin supérieur gauche). Les deux autres coins sont des ensembles mixtes. Cette division hommes célibataire vs. femmes mariées ne fait que nous donner un indice comme quoi il y a un attribut qui a divisé ces 2 sous-groupes. Il n'est pas possible de savoir quel est cet attribut. Pour le trouver, il faudrait faire de plus amples recherches.
 
 \section{Règles d'associations}
 
