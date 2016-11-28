@@ -1,0 +1,81 @@
+=== Run information ===
+
+Scheme:weka.clusterers.SimpleKMeans -N 5 -A "weka.core.EuclideanDistance -R first-last" -I 500 -S 10
+Relation:     QueryResult-weka.filters.unsupervised.attribute.Remove-R1-7,9,11,14,16,18,21-25
+Instances:    18484
+Attributes:   8
+              MaritalStatus
+              Gender
+              YearlyIncome
+              TotalChildren
+              EnglishEducation
+              EnglishOccupation
+              HouseOwnerFlag
+              NumberCarsOwned
+Test mode:split 66% train, remainder test
+
+=== Model and evaluation on training set ===
+
+
+kMeans
+======
+
+Number of iterations: 13
+Within cluster sum of squared errors: 32380.411802444884
+Missing values globally replaced with mean/mode
+
+Cluster centroids:
+                                              Cluster#
+Attribute                    Full Data               0               1               2               3               4
+                               (18484)          (3281)          (4163)          (4848)          (2080)          (4112)
+======================================================================================================================
+MaritalStatus                        M               S               M               M               M               S
+Gender                               M               M               M               F               M               F
+YearlyIncome                 57305.778       62520.573      51280.3267      69665.8416      71504.8077      37490.2724
+TotalChildren                   1.8444          1.0649          1.4206          2.5384          2.9231          1.5314
+EnglishEducation             Bachelors       Bachelors Partial College       Bachelors Partial College Partial College
+EnglishOccupation         Professional      Management  Skilled Manual    Professional    Professional        Clerical
+HouseOwnerFlag                       1               0               1               1               0               1
+NumberCarsOwned                 1.5027          1.7223          1.1472            1.71          2.2236          1.0783
+
+
+
+
+Time taken to build model (full training data) : 0.35 seconds
+
+=== Model and evaluation on test split ===
+
+kMeans
+======
+
+Number of iterations: 11
+Within cluster sum of squared errors: 22510.25938133108
+Missing values globally replaced with mean/mode
+
+Cluster centroids:
+                                              Cluster#
+Attribute                    Full Data               0               1               2               3               4
+                               (12199)          (2257)          (3000)          (2402)          (1952)          (2588)
+======================================================================================================================
+MaritalStatus                        M               M               S               M               M               S
+Gender                               M               F               M               F               M               F
+YearlyIncome                57007.9515      54669.9158      63826.6667      67960.0333      56629.0984       41263.524
+TotalChildren                   1.8433          1.6788           2.141          2.9725           1.397          0.9304
+EnglishEducation             Bachelors Graduate Degree       Bachelors Partial College Partial College Partial College
+EnglishOccupation         Professional    Professional      Management    Professional    Professional        Clerical
+HouseOwnerFlag                       1               1               1               1               0               0
+NumberCarsOwned                 1.4923          0.4998          1.6823          2.2019          1.6506          1.3594
+
+
+
+
+Time taken to build model (percentage split) : 0.2 seconds
+
+Clustered Instances
+
+0      1154 ( 18%)
+1      1540 ( 25%)
+2      1253 ( 20%)
+3       947 ( 15%)
+4      1391 ( 22%)
+

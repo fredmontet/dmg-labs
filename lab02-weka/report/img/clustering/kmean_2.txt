@@ -1,0 +1,78 @@
+=== Run information ===
+
+Scheme:weka.clusterers.SimpleKMeans -N 2 -A "weka.core.EuclideanDistance -R first-last" -I 500 -S 10
+Relation:     QueryResult-weka.filters.unsupervised.attribute.Remove-R1-7,9,11,14,16,18,21-25
+Instances:    18484
+Attributes:   8
+              MaritalStatus
+              Gender
+              YearlyIncome
+              TotalChildren
+              EnglishEducation
+              EnglishOccupation
+              HouseOwnerFlag
+              NumberCarsOwned
+Test mode:split 66% train, remainder test
+
+=== Model and evaluation on training set ===
+
+
+kMeans
+======
+
+Number of iterations: 6
+Within cluster sum of squared errors: 42201.20860740961
+Missing values globally replaced with mean/mode
+
+Cluster centroids:
+                                              Cluster#
+Attribute                    Full Data               0               1
+                               (18484)          (7729)         (10755)
+======================================================================
+MaritalStatus                        M               S               M
+Gender                               M               F               M
+YearlyIncome                 57305.778       60965.196      54675.9647
+TotalChildren                   1.8444          1.8039          1.8735
+EnglishEducation             Bachelors       Bachelors Partial College
+EnglishOccupation         Professional    Professional  Skilled Manual
+HouseOwnerFlag                       1               0               1
+NumberCarsOwned                 1.5027          1.7798          1.3036
+
+
+
+
+Time taken to build model (full training data) : 0.22 seconds
+
+=== Model and evaluation on test split ===
+
+kMeans
+======
+
+Number of iterations: 9
+Within cluster sum of squared errors: 28093.399234044766
+Missing values globally replaced with mean/mode
+
+Cluster centroids:
+                                              Cluster#
+Attribute                    Full Data               0               1
+                               (12199)          (5860)          (6339)
+======================================================================
+MaritalStatus                        M               M               S
+Gender                               M               F               M
+YearlyIncome                57007.9515      61515.3584      52841.1421
+TotalChildren                   1.8433          2.3683          1.3581
+EnglishEducation             Bachelors Partial College       Bachelors
+EnglishOccupation         Professional    Professional  Skilled Manual
+HouseOwnerFlag                       1               1               1
+NumberCarsOwned                 1.4923          1.6454          1.3507
+
+
+
+
+Time taken to build model (percentage split) : 0.2 seconds
+
+Clustered Instances
+
+0      3015 ( 48%)
+1      3270 ( 52%)
+
