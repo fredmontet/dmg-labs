@@ -45,15 +45,15 @@ Attributes:   8
               NumberCarsOwned
 Test mode:    split 80.0% train, remainder test
 \end{lstlisting}
-\caption{Information du run REPTree}
+\caption{Informations du run REPTree}
 \label{lst:reptree_run}
 \end{figure}
 
-Le résultat de ce run à montré que la moyenne pondérée des instances correctement classifiées est 91.29\%. La valeur de ce résultat est bonne et indique que notre modèle est bon. Cependant, seul ce résultat ne permet pas d'affirmer que le modèle est bon. Il est nécessaire d'observer les différentes métriques dans la partie \texttt{Detailed Accuracy By Class} du listing \autoref{lst:reptree_res} pour en savoir d'avantage. Sur ce dernier, on constate que \texttt{0.913} est la moyenne des métriques TP Rate, Precision, Recall et F-Measure pour les différentes classes. Notre analyse est donc confortée par la stabilité du résultat moyen de ces différentes métriques.
+Le résultat de ce run à montré que la moyenne pondérée des instances correctement classifiées est 91.29\%. La valeur de ce résultat est bonne et indique que notre modèle est bon. Cependant, ce seul résultat ne permet pas d'affirmer que le modèle est bon. Il est nécessaire d'observer les différentes métriques dans la partie \texttt{Detailed Accuracy By Class} du listing \autoref{lst:reptree_res} pour en savoir d'avantage. Sur ce dernier, on constate que \texttt{0.913} est la moyenne des métriques TP Rate, Precision, Recall et F-Measure pour les différentes classes. Notre analyse est donc confortée par la stabilité du résultat moyen de ces différentes métriques.
 
 Maintenant, il est intéressant de savoir quelles sont les forces et faiblesses de notre modèle. Pour cela, nous baserons nos constats sur la F-Measure. Cette dernière étant robuste car elle prend en compte precision et recall. On y voit que la classe au meilleur score est \texttt{Manual} avec 0.970 et la moins bonne est \texttt{Skilled Manual} avec 0.882.
 
-Afin d'améliorer notre modèle, on se concentrera donc sur la classes \texttt{Skilled Manual}. La matrice de confusion nous donne le détail de classification des instances de \texttt{Skilled Manual}. On y voit que \texttt{Skilled Manual} est souvent pris pour \texttt{Professional} et vis et versa. Ceci peut nous donner une piste pour de plus amples analyse ou on se questionnera sur les similarités et différences entre 2 instances de chacune des classes pour comprendre quel sont les facteurs qui rentrent en jeux.
+Afin d'améliorer notre modèle, on se concentrera donc sur la classe \texttt{Skilled Manual}. La matrice de confusion nous donne le détail de classification des instances de \texttt{Skilled Manual}. On y voit que \texttt{Skilled Manual} est souvent pris pour \texttt{Professional} et vice-versa. Ceci peut nous donner une piste pour de plus amples analyse ou on se questionnera sur les similarités et différences entre 2 instances de chacune des classes pour comprendre quel sont les facteurs qui rentrent en jeux.
 
 \begin{figure}[H]
 \centering
@@ -91,7 +91,7 @@ Weighted Avg.
     4    0   15  545   12 |    d = Clerical
     0    0    4    9  458 |    e = Manual
 \end{lstlisting}
-\caption{Résultat du run REPTree}
+\caption{Résultats du run REPTree}
 \label{lst:reptree_res}
 \end{figure}
 
@@ -133,7 +133,7 @@ YearlyIncome < 45000
 
 
 \subsection*{SimpleKMeans - 5 clusters}
-    
+
     Notre premier exemple de clustering selon cet algorithme est fait selon 5 clusters (voir figure \ref{kmeans5}). Nous avons fait ce choix de 5 clusters car le nombre d'attributs profession est aussi égal à 5.
 
     \begin{figure}[H]
@@ -156,7 +156,7 @@ YearlyIncome < 45000
     \newpage
 
 \subsection*{SimpleKMeans - 2 clusters}
-    
+
     Notre second exemple de classificaiton a été fait en comparant 2 clusters (voir figure \ref{kmeans2}).
 
     \begin{figure}[H]
