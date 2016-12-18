@@ -1,17 +1,37 @@
 \chapter{Comprendre l'API Lucene}
 
-\textit{1. Does the command line demo use stopword removal? Explain how you find out the answer.}
+\section{Question 1}
+\label{sec:question_1}
+\textit{Does the command line demo use stopword removal? Explain how you find out the answer.}
 
-%TODO
+Oui, les stop words sont supprimés avec la ligne de commande de la démo.
 
-\textit{2. Does the command line demo use stemming? Explain how you find out the answer.}
+Dans Lucene, les \texttt{Analyzer} ont la tâche d'enlever les stop words. Étant donné qu'il y en a plusieurs types, il faut dans un premier temps savoir lequel est utilisé. 
 
-%TODO
+En regardant la page de demo il est écrit : \textif{The main() method parses the command-line parameters, then in preparation for instantiating IndexWriter, opens a Directory, and instantiates StandardAnalyzer and IndexWriterConfig.} 
+Le \texttt{StandardAnalyzer} est donc utilisé. Dans la documentation Lucene 6.3.0, on trouve que la classe textit{StandardAnalyzer}\footnote{\url{http://lucene.apache.org/core/6_3_0/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html?is-external=true}} utilise le \texttt{StopFilter} avec une liste de stop words en anglais.
 
-\textit{3. Is the search of the command line demo case insensitive? How did you find out the answer?}
+\section{Question 2}
+\textit{Does the command line demo use stemming? Explain how you find out the answer.}
 
-%TODO
-   
-\textit{4. Does it matter whether stemming occurs before or after stopword removal? Consider this as a general question.}
+Non, le stemming n'est pas effectué avec la ligne de commande la demo.
 
-%TODO
+Les \texttt{Analyzer} ont la tâche d'effectuer le stemming. Cependant, suivant lequel est utilisé, cela n'est pas le cas de tous. Comme cité dans la \autoref{sec:question_1} le \texttt{StandardAnalyzer} est utilisé. Selon la documentation le stemming n'est mentionné à aucun moment, on en déduit donc qu'il n'est pas effectué.
+
+Notre deduction est comfortée en regardant le code source du \texttt{StandardAnalyzer}\footnote{\url{https://github.com/apache/lucene-solr/blob/master/lucene/core/src/java/org/apache/lucene/analysis/standard/StandardAnalyzer.java}} et en le comparant avec celui de l'\texttt{EnglishAnalyzer}\footnote{\url{https://github.com/apache/lucene-solr/blob/master/lucene/analysis/common/src/java/org/apache/lucene/analysis/en/EnglishAnalyzer.java#L107}} qui lui, fait le stemming avec l'algorithme de Porter.
+
+\section{Question 3}
+\textit{Is the search of the command line demo case insensitive? How did you find out the answer?}
+
+Non, la demo n'est pas sensible à la casse. 
+
+On le constate très simplement en comparant le nombre de résultats de deux requêtes similaires. Nous avons efféctué plusieurs recherches, entre autre ``ANALYZER'' et ``analyzer''. Dans chacun des cas, le nombre de résultats obtenu à été le même pour les requêtes ont donnés le même nombre de résultat, respéctivement 522 pour la reququête citée ci-dessus. 
+
+\section{Question 4}
+\textit{Does it matter whether stemming occurs before or after stopword removal? Consider this as a general question.}
+
+Oui, cet ordre joue un rôle dans le résultat.
+
+Si le stemming est fait avant la suppression des stopwords, il est possible que certain mot de la liste des stopwords soient égaux à certains mots ``stemmés'' et donc, seront supprimés alors qu'à la base, ils ne sont pas des stopwords. Cet ordre n'est donc pas approprié. 
+
+Dans le cas ou la suppression des stopwords est faite avant le stemming, on enlève d'abord les mots considérés comme inutiles et ensuite on ``stem'' ce sous-ensemble pour en trouver les racines en fonction de la langue désirée. C'est avec cet ordre que le résultat sera le plus juste.

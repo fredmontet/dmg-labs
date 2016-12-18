@@ -1,9 +1,40 @@
-\chapter{Installation}
+\chapter{Installation de Lucene}
 
-\section{Lucene}
+Pour installer Lucene, nous avons téléchargé son archive en version 6.3.0. Puis, nous avons suivi la page de demo \footnote{\url{http://lucene.apache.org/core/6_3_0/demo/overview-summary.html}}. Cette dernière nous a mené à un environnement fonctionnel de Lucene ou il est possible d'indexer une collection de document et d'effectuer des recherches dessus. 
 
-%TODO
+Le listing \autoref{lst:lucene_classpath} montre les variables d'environnement ajoutées au \texttt{CLASSPATH}.
 
-\section{Luke}
+\begin{figure}[H]
+\centering
+\begin{lstlisting}	
+# Lucene
+export LUCENE_HOME="/Users/fredmontet/Dropbox/project/master/dmg/project/labs/lab03-lucene/app/lucene-6.3.0"
+export LUCENE_CORE=${LUCENE_HOME}/core/lucene-core-6.3.0.jar
+export LUCENE_ANALYZERS=${LUCENE_HOME}/analysis/common/lucene-analyzers-common-6.3.0.jar
+export LUCENE_QUERYPARSER=${LUCENE_HOME}/queryparser/lucene-queryparser-6.3.0.jar
+export LUCENE_DEMO=${LUCENE_HOME}/demo/lucene-demo-6.3.0.jar
+export LUCENE=$LUCENE_CORE:$LUCENE_ANALYZERS:$LUCENE_QUERYPARSER:$LUCENE_DEMO
 
-%TODO
+# Classpath
+export CLASSPATH=$LUCENE:$CLASSPATH
+\end{lstlisting}
+\caption{Ajout au CLASSPATH}
+\label{lst:lucene_classpath}
+\end{figure}
+
+Une fois la variable \texttt{CLASSPATH} mise à jour, il est possible d'utiliser Lucene et d'indexer 
+
+\begin{figure}[H]
+\centering
+\begin{lstlisting}	
+
+# Command to index
+java org.apache.lucene.demo.IndexFiles -docs $LUCENE_HOME/docs
+
+# Command to search
+java org.apache.lucene.demo.SearchFiles 
+
+\end{lstlisting}
+\caption{Ajout au CLASSPATH}
+\label{lst:lucene_classpath}
+\end{figure}
