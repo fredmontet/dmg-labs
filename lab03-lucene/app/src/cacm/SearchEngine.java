@@ -1,6 +1,10 @@
 package cacm;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.core.StopAnalyzer;
+import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
+import org.apache.lucene.analysis.en.EnglishAnalyzer;
+import org.apache.lucene.analysis.shingle.ShingleAnalyzerWrapper;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -10,6 +14,7 @@ import org.apache.lucene.index.*;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.similarities.ClassicSimilarity;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.queryparser.classic.QueryParser;
@@ -29,12 +34,16 @@ public class SearchEngine {
     private Analyzer index_analyzer;
     private Analyzer query_analyzer;
 
-    public SearchEngine(String file_path, String index_path) throws IOException{
+    public SearchEngine(String file_path, String index_path) throws IOException {
         setFilePath(file_path);
         setIndexPath(index_path);
     }
 
     public void index(String analyzer_type) throws IOException {
+        index(analyzer_type, null);
+    }
+
+    public void index(String analyzer_type, ClassicSimilarity similarity) throws IOException {
         System.out.println("Start indexing CACM collection");
         this.index_analyzer = getAnalyzerByName(analyzer_type);
 
@@ -42,6 +51,8 @@ public class SearchEngine {
         IndexWriterConfig iwc = new IndexWriterConfig(index_analyzer);
         iwc.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
         iwc.setUseCompoundFile(false);
+        if (similarity != null)
+            iwc.setSimilarity(similarity);
 
         // Create index writer
         Path path = FileSystems.getDefault().getPath("index");
@@ -69,17 +80,17 @@ public class SearchEngine {
                 fieldType.freeze();
 
                 // Add fields to document
-                if(item.id != null)
+                if (item.id != null)
                     doc.add(new Field("id", item.id, fieldType));
 
-                if(item.authors != null)
+                if (item.authors != null)
                     for (String authorName : item.authors)
                         doc.add(new StringField("author", authorName, Field.Store.YES));
 
-                if(item.title != null)
+                if (item.title != null)
                     doc.add(new Field("title", item.title, fieldType));
 
-                if(item.summary != null)
+                if (item.summary != null)
                     doc.add(new Field("summary", item.summary, fieldType));
 
                 // Add document to index
@@ -93,7 +104,11 @@ public class SearchEngine {
         System.out.println("Indexing done");
     }
 
-    public void query(String fieldStr, String queryStr, String analyzer_type) throws ParseException, IOException{
+    public void query(String fieldStr, String queryStr, String analyzer_type, int max_outputs) throws ParseException, IOException {
+        query(fieldStr, queryStr, analyzer_type, max_outputs, null);
+    }
+
+    public void query(String fieldStr, String queryStr, String analyzer_type, int max_outputs, ClassicSimilarity similarity) throws ParseException, IOException {
         System.out.println("Start search");
         this.query_analyzer = getAnalyzerByName(analyzer_type);
 
@@ -110,7 +125,8 @@ public class SearchEngine {
 
         // Create index searcher
         IndexSearcher indexSearcher = new IndexSearcher(indexReader);
-        //indexSearcher.setSimilarity(new CustomSimilarity());
+        if (similarity != null)
+            indexSearcher.setSimilarity(similarity);
 
         // Search query
         ScoreDoc[] hits = indexSearcher.search(query, 1000).scoreDocs;
@@ -118,9 +134,13 @@ public class SearchEngine {
         // Retrieve results
         System.out.println("Results found: " + hits.length);
         System.out.println("Query is: " + query.toString());
-        for (ScoreDoc hit: hits) {
+        int i = 0;
+        for (ScoreDoc hit : hits) {
+            if (i == max_outputs)
+                break;
             Document doc = indexSearcher.doc(hit.doc);
             System.out.println(doc.get("id") + ": " + doc.get("title") + " (" + hit.score + ")");
+            i++;
         }
 
         // Close index reader
@@ -132,13 +152,12 @@ public class SearchEngine {
 
     private Analyzer getAnalyzerByName(String analyzer_type) {
 
-        System.out.println("Analyzer type : "+analyzer_type);
+        System.out.println("Analyzer type : " + analyzer_type);
         Analyzer analyzer;
 
-        switch(analyzer_type) {
+        switch (analyzer_type) {
             case "standard":
                 return analyzer = new StandardAnalyzer();
-            /*
             case "whitespace":
                 return analyzer = new WhitespaceAnalyzer();
             case "english":
@@ -148,8 +167,11 @@ public class SearchEngine {
             case "shingle_3":
                 return analyzer = new ShingleAnalyzerWrapper(3, 3);
             case "stop":
-                return analyzer = new StopAnalyzer(new FileReader("data/common_words.txt"));
-            */
+                try {
+                    return analyzer = new StopAnalyzer(new FileReader("asset/common_words.txt"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             default:
                 System.out.println(analyzer_type + " analyzer is not existing, StandardAnalyzer is used instead");
                 return analyzer = new StandardAnalyzer();
