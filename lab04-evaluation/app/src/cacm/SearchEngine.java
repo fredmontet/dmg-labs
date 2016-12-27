@@ -1,6 +1,7 @@
 package cacm;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.CharArraySet;
 import org.apache.lucene.analysis.core.StopAnalyzer;
 import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
 import org.apache.lucene.analysis.en.EnglishAnalyzer;
@@ -83,15 +84,8 @@ public class SearchEngine {
                 if (item.id != null)
                     doc.add(new Field("id", item.id, fieldType));
 
-                if (item.authors != null)
-                    for (String authorName : item.authors)
-                        doc.add(new StringField("author", authorName, Field.Store.YES));
-
-                if (item.title != null)
-                    doc.add(new Field("title", item.title, fieldType));
-
-                if (item.summary != null)
-                    doc.add(new Field("summary", item.summary, fieldType));
+                if (item.content != null)
+                    doc.add(new Field("content", item.content, fieldType));
 
                 // Add document to index
                 indexWriter.addDocument(doc);
@@ -150,7 +144,7 @@ public class SearchEngine {
         System.out.println("Search is done !");
     }
 
-    private Analyzer getAnalyzerByName(String analyzer_type) {
+    private Analyzer getAnalyzerByName(String analyzer_type) throws java.io.IOException {
 
         System.out.println("Analyzer type : " + analyzer_type);
         Analyzer analyzer;
@@ -162,6 +156,9 @@ public class SearchEngine {
                 return analyzer = new WhitespaceAnalyzer();
             case "english":
                 return analyzer = new EnglishAnalyzer();
+            case "english_custom":
+                FileReader stopwords = new FileReader("asset/common_words_v2.txt");
+                return analyzer = new EnglishAnalyzer(new CharArraySet(stopwords.read(), true));
             case "shingle_2":
                 return analyzer = new ShingleAnalyzerWrapper(2, 2);
             case "shingle_3":

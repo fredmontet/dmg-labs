@@ -9,9 +9,6 @@ import org.apache.lucene.store.FSDirectory;
 
 import java.nio.file.FileSystems;
 
-/**
- * Created by brian on 12/20/16.
- */
 public class ReadIndex {
     public void authorWithMaxPublication() throws Exception {
         Directory d = FSDirectory.open(FileSystems.getDefault().getPath("index"));
@@ -31,6 +28,7 @@ public class ReadIndex {
         TermStats[] fields = HighFreqTerms.getHighFreqTerms(ir, 10, "title", cmp);
         for (TermStats ts: fields)
             System.out.println(ts.termtext.utf8ToString() + " => " + ts.docFreq);
-
     }
+
+
 }

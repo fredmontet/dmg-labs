@@ -6,6 +6,7 @@ public class CacmItem {
 	public String[] authors;
 	public String title;
 	public String summary;
+	public String content;
 	
 	public CacmItem(String line) {
 		
@@ -23,5 +24,7 @@ public class CacmItem {
 		} else {
 			this.summary = null;
 		}
+
+		this.content = this.title+" "+this.summary;
 	}
 }
