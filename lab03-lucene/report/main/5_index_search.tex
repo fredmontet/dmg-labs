@@ -6,9 +6,9 @@ Voir code sources attachés en annexe.
 
 \section{Utilisation de différents \texttt{Analyzers}}
 
-Lucen implémente plusieurs analyseurs pour traiter un document. Nous allons en essayer quelqu'uns pour l'indexation et la recherche.
+Lucene implémente plusieurs \texttt{Analyzers} pour traiter un document. Nous allons en essayer quelques-uns pour l'indexation et la recherche.
 
-Voici les cinq questions auxquelles il faut répondre pour chaque analyseur :
+Voici les cinq questions auxquelles il faut répondre pour chaque \texttt{Analyzer} :
 
 \begin{enumerate}
     \item The number of indexed documents and indexed terms.
@@ -42,6 +42,7 @@ Voici les cinq questions auxquelles il faut répondre pour chaque analyseur :
     \item 2'388 kB
     \item 2'463 ms
 \end{enumerate}
+
 \subsection{ShingleAnalyzerWrapper (using shingle size 2)}
 \begin{enumerate}
     \item 3'203 / 106'272
@@ -50,6 +51,7 @@ Voici les cinq questions auxquelles il faut répondre pour chaque analyseur :
     \item 5'449 kB
     \item 3'293 ms
 \end{enumerate}
+
 \subsection{ShingleAnalyzerWrapper (using shingle size 3)}
 \begin{enumerate}
     \item 3'203 / 148'948
@@ -58,6 +60,7 @@ Voici les cinq questions auxquelles il faut répondre pour chaque analyseur :
     \item 7'053 kB
     \item 3'580 ms
 \end{enumerate}
+
 \subsection{StopAnalyzer}
 \begin{enumerate}
     \item 3'203 / 24'662
@@ -69,7 +72,7 @@ Voici les cinq questions auxquelles il faut répondre pour chaque analyseur :
 
 \section{Lecture de l'index}
 
-Plutôt que d'utiliser Luke pour lire l'index, nous allons maintenant utiliser l'API Lucene.
+Plutôt que d'utiliser Luke pour lire l'index, nous allons maintenant utiliser l'API Lucene. 
 
 En utilisant la classe \textit{HighFreqTerms} nous devons répondre aux deux questions suivantes :
 
@@ -187,7 +190,7 @@ Voici les 10 premiers résultats de cette requête sur les \textbf{188} :
     \item 1935: Randomized Binary Search Technique (7.1063213)
     \item 1681: Easy English,a Language for InformationRetrieval Through a Remote Typewriter Console (6.70207)
     \item 2990: Effective Information Retrieval Using Term Accuracy (6.70207)
-    \item 2519: On the Problem of Communicating Complex Information (6.2497764)
+    \item 2519: On the Problem of Communicating Complex Information (6.2497764)\\
 \end{itemize}
 
 \item \textit{Publications containing both "Information" and "Retrieval".}
@@ -209,7 +212,7 @@ Voici les 10 premiers résultats de cette requête sur les \textbf{23} :
     \item 1935: Randomized Binary Search Technique (7.1063213)
     \item 1681: Easy English,a Language for InformationRetrieval Through a Remote Typewriter Console (6.70207)
     \item 2990: Effective Information Retrieval Using Term Accuracy (6.70207)
-    \item 2519: On the Problem of Communicating Complex Information (6.2497764)
+    \item 2519: On the Problem of Communicating Complex Information (6.2497764)\\
 \end{itemize}
 
 \item \textit{Publications containing at least the term "Retrieval" and, possibly "Information" but not "Database".}
@@ -231,7 +234,7 @@ Voici les 10 premiers résultats de cette requête sur les \textbf{54} :
     \item 1935: Randomized Binary Search Technique (7.1063213)
     \item 1681: Easy English,a Language for InformationRetrieval Through a Remote Typewriter Console (6.70207)
     \item 2990: Effective Information Retrieval Using Term Accuracy (6.70207)
-    \item 2519: On the Problem of Communicating Complex Information (6.2497764)
+    \item 2519: On the Problem of Communicating Complex Information (6.2497764)\\
 \end{itemize}
 
 \item \textit{Publications containing a term starting with "Info".}
@@ -253,7 +256,7 @@ Voici les 10 premiers résultats de cette requête sur les \textbf{193} :
     \item 483: On the Nonexistence of a Phrase Structure Grammar for ALGOL 60 (1.0)
     \item 616: An Information Algebra - Phase I Report-LanguageStructure Group of the CODASYL Development Committee (1.0)
     \item 644: A String Language for Symbol Manipulation Based on ALGOL 60 (1.0)
-    \item 655: COMIT as an IR Language (1.0)
+    \item 655: COMIT as an IR Language (1.0)\\
 \end{itemize}
 
 \item \textit{Publications containing the term "Information" close to "Retrieval" (max distance 5).}
@@ -275,7 +278,7 @@ Voici les 10 premiers résultats de cette requête sur les \textbf{159} :
     \item 3134: The Use of Normal Multiplication Tablesfor Information Storage and Retrieval (3.7823412)
     \item 2905: Perfect Hashing Functions: A SingleProbe Retrieving Method for Static Sets (3.6556962)
     \item 1457: Data Manipulation and Programming Problemsin Automatic Information Retrieval (3.5519412)
-    \item 1745: A Position Paper on Computing and Communications (3.5519412)
+    \item 1745: A Position Paper on Computing and Communications (3.5519412)\\
 \end{itemize}
 
 \end{enumerate}

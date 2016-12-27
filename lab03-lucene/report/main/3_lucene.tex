@@ -8,7 +8,7 @@ Oui, les stop words sont supprimés avec la ligne de commande de la démo.
 
 Dans Lucene, les \texttt{Analyzer} ont la tâche d'enlever les stop words. Étant donné qu'il y en a plusieurs types, il faut dans un premier temps savoir lequel est utilisé. 
 
-En regardant la page de demo il est écrit : \textif{The main() method parses the command-line parameters, then in preparation for instantiating IndexWriter, opens a Directory, and instantiates StandardAnalyzer and IndexWriterConfig.} 
+En regardant la page de demo il est écrit : \texttt{The main()} method parses the command-line parameters, then in preparation for instantiating IndexWriter, opens a Directory, and instantiates StandardAnalyzer and IndexWriterConfig.
 Le \texttt{StandardAnalyzer} est donc utilisé. Dans la documentation Lucene 6.3.0, on trouve que la classe textit{StandardAnalyzer}\footnote{\url{http://lucene.apache.org/core/6_3_0/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html?is-external=true}} utilise le \texttt{StopFilter} avec une liste de stop words en anglais.
 
 \section{Question 2}
@@ -18,7 +18,7 @@ Non, le stemming n'est pas effectué avec la ligne de commande la demo.
 
 Les \texttt{Analyzer} ont la tâche d'effectuer le stemming. Cependant, suivant lequel est utilisé, cela n'est pas le cas de tous. Comme cité dans la \autoref{sec:question_1} le \texttt{StandardAnalyzer} est utilisé. Selon la documentation le stemming n'est mentionné à aucun moment, on en déduit donc qu'il n'est pas effectué.
 
-Notre deduction est comfortée en regardant le code source du \texttt{StandardAnalyzer}\footnote{\url{https://github.com/apache/lucene-solr/blob/master/lucene/core/src/java/org/apache/lucene/analysis/standard/StandardAnalyzer.java}} et en le comparant avec celui de l'\texttt{EnglishAnalyzer}\footnote{\url{https://github.com/apache/lucene-solr/blob/master/lucene/analysis/common/src/java/org/apache/lucene/analysis/en/EnglishAnalyzer.java#L107}} qui lui, fait le stemming avec l'algorithme de Porter.
+Notre deduction est comfortée en regardant le code source du \texttt{StandardAnalyzer}\footnote{\url{https://github.com/apache/lucene-solr/blob/master/lucene/core/src/java/org/apache/lucene/analysis/standard/StandardAnalyzer.java}} et en le comparant avec celui de l'\texttt{EnglishAnalyzer}\footnote{\url{https://github.com/apache/lucene-solr/blob/master/lucene/analysis/common/src/java/org/apache/lucene/analysis/en/EnglishAnalyzer.java}} à la ligne 107 qui lui, fait le stemming avec l'algorithme de Porter.
 
 \section{Question 3}
 \textit{Is the search of the command line demo case insensitive? How did you find out the answer?}
