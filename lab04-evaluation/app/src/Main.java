@@ -2,18 +2,12 @@ import cacm.QueryItems;
 import cacm.Results;
 import cacm.SearchEngine;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.SynchronousQueue;
-
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
         // Path etc.
-        String index_path = "index";
+        String index_path = "indexes";
         String file_path = "asset/cacm_v2.txt";
         String queries_path = "asset/query.txt";
         String relevant_results = "asset/qrels.txt";
@@ -32,7 +26,6 @@ public class Main {
         System.out.println("\tLoading the QueryItems from "+queries_path);
         queries.load(queries_path);
         System.out.println("\t-> Queries loaded\n");
-
         System.out.println("\tNumber of queries: "+queries.items.size());
 
         int id = 0; // Testing
@@ -43,21 +36,20 @@ public class Main {
         // Select the Analyzers to evaluate
         System.out.println("# Select the Analyzers\n");
         String[] analyzer_types = {"whitespace","standard","english","english_custom"};
-        for (String analyzer: analyzer_types) {
+        for (String analyzer: analyzer_types)
             System.out.println("\t- "+analyzer);
-        }
         System.out.println("\n");
 
         // For each Analyzer
         System.out.println("# Build the indexes and query them\n");
 
         for (String analyzer_type : analyzer_types) {
-
-            System.out.println("\t"+analyzer_type);
+            System.out.println("## "+analyzer_type+"\n");
 
             System.out.print("\t-> Indexing...");
             cacm.index(analyzer_type);
             System.out.print("\r\t-> Indexing\tDONE");
+            System.out.print("\n\t      Output in indexes/index_"+analyzer_type);
 
             System.out.print("\n\t-> Querying...");
             results = cacm.batchQuery("content", queries, analyzer_type);
@@ -66,7 +58,7 @@ public class Main {
             System.out.print("\n\t-> Export...");
             results.export(analyzer_type);
             System.out.print("\r\t-> Export\tDONE");
-            System.out.print("\n\t-> Output in results/qrels_"+analyzer_type+".txt");
+            System.out.print("\n\t      Output in results/qrels_"+analyzer_type+".txt");
 
             System.out.println("\n");
         }

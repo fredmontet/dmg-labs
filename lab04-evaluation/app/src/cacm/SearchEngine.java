@@ -23,6 +23,7 @@ import org.apache.lucene.queryparser.classic.ParseException;
 
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -57,8 +58,20 @@ public class SearchEngine {
         if (similarity != null)
             iwc.setSimilarity(similarity);
 
+        String folder = "indexes";
+        File file = new File(folder);
+
+        // Create the directory if it doesn't exist.
+        if (!file.exists()) {
+            try{
+                file.mkdir();
+            } catch(SecurityException se) {
+                se.printStackTrace();
+            }
+        }
+
         // Create index writer
-        Path path = FileSystems.getDefault().getPath("index");
+        Path path = FileSystems.getDefault().getPath(folder+"/index_"+analyzer_type);
         Directory dir = FSDirectory.open(path);
         IndexWriter indexWriter = new IndexWriter(dir, iwc);
 
@@ -110,7 +123,7 @@ public class SearchEngine {
 
         // Setup tools
         ArrayList<Integer> results = new ArrayList<>();
-        Path path = FileSystems.getDefault().getPath(this.index_path);
+        Path path = FileSystems.getDefault().getPath(this.index_path+"/index_"+analyzer_type);
         Directory dir = FSDirectory.open(path);
         IndexReader indexReader = DirectoryReader.open(dir);
         QueryParser parser = new QueryParser(fieldStr, this.query_analyzer);

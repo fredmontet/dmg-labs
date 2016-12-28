@@ -1,14 +1,9 @@
 package cacm;
 
-/**
- * Created by fredmontet on 27.12.16.
- */
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
 
 public class QueryItems {
 

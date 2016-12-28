@@ -51,16 +51,10 @@ public class Results {
 
         // Create the directory if it doesn't exist.
         if (!file.exists()) {
-            System.out.println("Creating directory : " + folder);
-            boolean res = false;
             try{
                 file.mkdir();
-                res = true;
             } catch(SecurityException se) {
                 se.printStackTrace();
-            }
-            if(res) {
-                System.out.println("Directory "+ folder+" created");
             }
         }
 

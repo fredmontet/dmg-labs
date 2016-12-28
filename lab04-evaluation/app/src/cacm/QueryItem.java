@@ -1,8 +1,5 @@
 package cacm;
 
-/**
- * Created by fredmontet on 27.12.16.
- */
 public class QueryItem {
 
     public int id;
