@@ -2,8 +2,10 @@
 
 ### Project Specific ###
 
-lucene-6.3.0
-luke-6.3.0
+/indexes/
+/results/
+/lucene-6.3.0/
+/luke-6.3.0/
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
