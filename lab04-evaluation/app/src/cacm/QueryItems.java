@@ -20,7 +20,6 @@ public class QueryItems {
 
     public void load(String filepath) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(filepath))) {
-            System.out.println("Loading the QueryItems from "+filepath);
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.length() > 1) {

@@ -27,6 +27,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SearchEngine {
 
@@ -45,7 +47,7 @@ public class SearchEngine {
     }
 
     public void index(String analyzer_type, ClassicSimilarity similarity) throws IOException {
-        System.out.println("Start indexing CACM collection");
+
         this.index_analyzer = getAnalyzerByName(analyzer_type);
 
         // Configure indexer
@@ -95,45 +97,40 @@ public class SearchEngine {
         // Terminate indexing
         indexWriter.close();
         dir.close();
-        System.out.println("Indexing done");
     }
 
-    public void query(String fieldStr, String queryStr, String analyzer_type, int max_outputs) throws ParseException, IOException {
-        query(fieldStr, queryStr, analyzer_type, max_outputs, null);
+    public void query(String fieldStr, String queryStr, String analyzer_type) throws ParseException, IOException {
+        query(fieldStr, queryStr, analyzer_type, null);
     }
 
-    public void query(String fieldStr, String queryStr, String analyzer_type, int max_outputs, ClassicSimilarity similarity) throws ParseException, IOException {
-        System.out.println("Start search");
+    public ArrayList<Integer> query(String fieldStr, String queryStr, String analyzer_type, ClassicSimilarity similarity) throws ParseException, IOException {
+
+        //System.out.println("Start search");
         this.query_analyzer = getAnalyzerByName(analyzer_type);
 
-        // Create query parser
-        QueryParser parser = new QueryParser(fieldStr, this.query_analyzer);
-
-        // Parse query
-        Query query = parser.parse(queryStr);
-
-        // Create index reader
+        // Setup tools
+        ArrayList<Integer> results = new ArrayList<>();
         Path path = FileSystems.getDefault().getPath(this.index_path);
         Directory dir = FSDirectory.open(path);
         IndexReader indexReader = DirectoryReader.open(dir);
-
-        // Create index searcher
+        QueryParser parser = new QueryParser(fieldStr, this.query_analyzer);
         IndexSearcher indexSearcher = new IndexSearcher(indexReader);
-        if (similarity != null)
+        if (similarity != null) {
             indexSearcher.setSimilarity(similarity);
+        }
 
-        // Search query
-        ScoreDoc[] hits = indexSearcher.search(query, 1000).scoreDocs;
+        // Search the index with a query
+        Query query = parser.parse(QueryParser.escape(queryStr));
+        ScoreDoc[] hits = indexSearcher.search(query, Integer.MAX_VALUE).scoreDocs;
 
         // Retrieve results
-        System.out.println("Results found: " + hits.length);
-        System.out.println("Query is: " + query.toString());
+        //System.out.println("Results found: " + hits.length);
+        //System.out.println("Query is: " + query.toString());
         int i = 0;
         for (ScoreDoc hit : hits) {
-            if (i == max_outputs)
-                break;
             Document doc = indexSearcher.doc(hit.doc);
-            System.out.println(doc.get("id") + ": " + doc.get("title") + " (" + hit.score + ")");
+            results.add(Integer.parseInt(doc.get("id")));
+            //System.out.println(doc.get("id") + ": " + doc.get("content") + " (" + hit.score + ")");
             i++;
         }
 
@@ -141,12 +138,28 @@ public class SearchEngine {
         indexReader.close();
         dir.close();
 
-        System.out.println("Search is done !");
+        //System.out.println("Search is done !");
+        return results;
+    }
+
+    public Results batchQuery(String fieldStr, QueryItems queries, String analyzer_type) throws ParseException, IOException {
+
+        // Setup the tools
+        ArrayList<Integer> queryResults = new ArrayList<>();
+        Results results = new Results();
+
+        // Loop and search the index with each query
+        for (QueryItem item: queries.items) {
+            queryResults = query(fieldStr, item.query, analyzer_type, null);
+            results.results.put(item.id, queryResults);
+        }
+
+        return results;
     }
 
     private Analyzer getAnalyzerByName(String analyzer_type) throws java.io.IOException {
 
-        System.out.println("Analyzer type : " + analyzer_type);
+        //System.out.println("Analyzer type : " + analyzer_type);
         Analyzer analyzer;
 
         switch (analyzer_type) {

@@ -1,10 +1,12 @@
-import cacm.CustomSimilarity;
-import cacm.QueryItem;
 import cacm.QueryItems;
+import cacm.Results;
 import cacm.SearchEngine;
-import org.apache.lucene.queryparser.classic.QueryParser;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.SynchronousQueue;
 
 public class Main {
 
@@ -17,34 +19,56 @@ public class Main {
         String relevant_results = "asset/qrels.txt";
         String common_words = "asset/common_words.txt";
 
+        // Setup the tools
         SearchEngine cacm = new SearchEngine(file_path, index_path);
+        Results results;
+
+        System.out.println("Lab 04 - Evaluation");
+        System.out.println("===================\n");
 
         // Load all the queries
+        System.out.println("# Load all the queries\n");
         QueryItems queries = new QueryItems();
+        System.out.println("\tLoading the QueryItems from "+queries_path);
         queries.load(queries_path);
-        int id = 0; // Just for testing
-        System.out.println("Query id "+id+" is: "+queries.items.get(id).query);
-        
+        System.out.println("\t-> Queries loaded\n");
+
+        System.out.println("\tNumber of queries: "+queries.items.size());
+
+        int id = 0; // Testing
+        System.out.println("\tTest to make a request on the query id: "+id);
+        System.out.println("\t-> Query is: "+queries.items.get(id).query); // Testing
+        System.out.println("\n");
+
         // Select the Analyzers to evaluate
-        //String[] analyzer_types = {"whitespace","standard","english","english_custom"};
-        String[] analyzer_types = {"standard"}; // For testing
-        
-        // For each Analyzer
-        for (String analyzer_type : analyzer_types) {
-            // Build an index
-            cacm.index(analyzer_type);
-            // Execute all the queries
-            String queryString = "What articles exist which deal with TSS (Time Sharing System), an operating system for IBM computers?";
-            cacm.query("content", QueryParser.escape(queryString), analyzer_type, 10);
-            /*
-            for (QueryItem item: queries.items) {
-                cacm.query("content", QueryParser.escape(item.query), analyzer_type, 10);
-            }
-            */
+        System.out.println("# Select the Analyzers\n");
+        String[] analyzer_types = {"whitespace","standard","english","english_custom"};
+        for (String analyzer: analyzer_types) {
+            System.out.println("\t- "+analyzer);
         }
+        System.out.println("\n");
 
+        // For each Analyzer
+        System.out.println("# Build the indexes and query them\n");
 
-        // TODO YOLO!
+        for (String analyzer_type : analyzer_types) {
 
+            System.out.println("\t"+analyzer_type);
+
+            System.out.print("\t-> Indexing...");
+            cacm.index(analyzer_type);
+            System.out.print("\r\t-> Indexing\tDONE");
+
+            System.out.print("\n\t-> Querying...");
+            results = cacm.batchQuery("content", queries, analyzer_type);
+            System.out.print("\r\t-> Querying\tDONE");
+
+            System.out.print("\n\t-> Export...");
+            results.export(analyzer_type);
+            System.out.print("\r\t-> Export\tDONE");
+            System.out.print("\n\t-> Output in results/qrels_"+analyzer_type+".txt");
+
+            System.out.println("\n");
+        }
     }
 }
