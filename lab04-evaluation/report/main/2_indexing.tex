@@ -1,3 +1,48 @@
+
+
 \chapter{Indexation}
 
-% TODO
+Par rapport au laboratoire précédent, la partie indexation n'est pas fondamentalement différente. Quelques points valent tout de même la peine d'être mentionnés.
+
+
+\section{Changement des champs}
+
+Selon la donnée du laboratoire, nous avons crééons quatres différents indexes. Ces derniers contiennent les champs \texttt{id} et \texttt{content} selon le listing \autoref{lst:index_fields}.
+
+\begin{figure}[H]
+\centering
+\begin{lstlisting}	
+// Add fields to document
+if (item.id != null)
+    doc.add(new Field("id", item.id, fieldType));
+
+if (item.content != null)
+    doc.add(new Field("content", item.content, fieldType));
+\end{lstlisting}
+\caption{Déclaration des champs dans les index}
+\label{lst:index_fields}
+\end{figure}
+
+De plus, le champs \texttt{content} est composé des champs \texttt{title} et \texttt{summary} tel que dans le listing \autoref{lst:content}
+
+\begin{figure}[H]
+\centering
+\begin{lstlisting}	
+this.content = this.title+" "+this.summary;
+\end{lstlisting}
+\caption{Concaténation des champs title et summary}
+\label{lst:content}
+\end{figure}
+
+\section{Analyzers différents}
+
+Pour chacun des \texttt{Analyzers} :
+
+\begin{itemize}
+	\item \texttt{WhiteSpaceAnalyzer}
+	\item \texttt{StandardAnalyzer}
+	\item \texttt{EnglishAnalyzer}
+	\item \texttt{EnglishAnalyzer} avec la liste personnalisée de stopwords
+\end{itemize}
+
+Nous avons créé et sauvegardé un indexe généré avec chacun de ces \texttt{Analyzers}.
