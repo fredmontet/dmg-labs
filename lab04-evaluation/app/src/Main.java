@@ -11,7 +11,7 @@ public class Main {
         String file_path = "asset/cacm_v2.txt";
         String queries_path = "asset/query.txt";
         String relevant_results = "asset/qrels.txt";
-        String common_words = "asset/common_words.txt";
+        String common_words = "asset/common_words_v2.txt";
 
         // Setup the tools
         SearchEngine cacm = new SearchEngine(file_path, index_path);
